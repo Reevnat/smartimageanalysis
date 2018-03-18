@@ -50,6 +50,7 @@
   </dependencies>
   <build>
     <finalName>smartimageanalysis</finalName>
+      <outputDirectory>${project.build.directory}/${project.build.finalName}/WEB-INF/classes</outputDirectory>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -76,6 +77,18 @@
           <stopPort>8005</stopPort>
         </configuration>
       </plugin>
+        <plugin>
+            <groupId>com.google.cloud.tools</groupId>
+            <artifactId>appengine-maven-plugin</artifactId>
+            <version>1.3.1</version>
+            <configuration>
+                <!-- deploy configuration -->
+                <!--
+                          <deploy.promote>true</deploy.promote>                           <!~~ DEFAULT value ~~>
+                          <deploy.stopPreviousVersion>true</deploy.stopPreviousVersion>   <!~~ DEFAULT value ~~>
+                 -->
+            </configuration>
+        </plugin>
     </plugins>
   </build>
 
