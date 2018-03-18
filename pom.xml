@@ -47,6 +47,12 @@
       <artifactId>mysql-connector-java</artifactId>
       <version>6.0.6</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.eclipse.persistence</groupId>
+      <artifactId>javax.persistence</artifactId>
+      <version>2.0.0</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>smartimageanalysis</finalName>
