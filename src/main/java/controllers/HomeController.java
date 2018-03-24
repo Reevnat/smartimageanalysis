@@ -1,14 +1,19 @@
 package controllers;
 
 
+import jdk.nashorn.internal.runtime.regexp.joni.Config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import Utils.*;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -18,10 +23,19 @@ import java.io.IOException;
 
 @MultipartConfig
 @Controller
-public class HomeController  extends HttpServlet {
+public class HomeController implements ServletContextAware {
 
+    private ServletContext context;
+
+    @Override
+    public void setServletContext(final ServletContext servletContext) {
+        this.context = servletContext;
+
+    }
     @RequestMapping(value="/home", method = RequestMethod.GET)
-    public String viewHome(){
+    public String viewHome(Model model){
+        model.addAttribute("Test", context.getInitParameter("storage.bucket"));
+
         return "home";
     }
 
