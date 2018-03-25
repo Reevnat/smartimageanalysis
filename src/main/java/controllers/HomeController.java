@@ -43,7 +43,7 @@ public class HomeController implements ServletContextAware {
     public String viewUploadFile(@RequestParam("file") MultipartFile file) throws ServletException,IOException
     {
         CloudStorageHelper storageService = new CloudStorageHelper();
-        storageService.uploadFile(file,"smia");
+        storageService.uploadFile(file,context.getInitParameter("storage.bucket"));
 
         return "upload";
     }
@@ -51,7 +51,7 @@ public class HomeController implements ServletContextAware {
     @RequestMapping(value="/delete", method = RequestMethod.GET)
     public String viewSuccess(String fileId){
         CloudStorageHelper storageService = new CloudStorageHelper();
-        storageService.deleteImageUrl(fileId,"smia");
+        storageService.deleteImageUrl(fileId,context.getInitParameter("storage.bucket"));
         return "success";
     }
 }
