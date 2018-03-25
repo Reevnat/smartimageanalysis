@@ -1,1 +1,9 @@
 controllers\HomeController.class
+Utils\CloudStorageHelper.class
+entities\Image.class
+controllers\ImagesController.class
+entities\User.class
+controllers\UserController.class
+dao\ImageDao.class
+dao\UserDao.class
+entities\Result.class

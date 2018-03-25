@@ -12,6 +12,12 @@
       <li class="nav-item">
         <a class="nav-link" href="/my-images">My Images</a>
       </li>
+       <li class="nav-item">
+              <a class="nav-link" href="/users">Users</a>
+       </li>
+       <li class="nav-item">
+                     <a class="nav-link" href="/register">Register</a>
+        </li>
     </ul>
   </div>
 </nav>
