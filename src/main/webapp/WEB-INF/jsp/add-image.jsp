@@ -9,26 +9,13 @@
 <body>
     <%@ include file="../_shared/header.jsp" %>
     <h2>My Images</h2>
-    <a href="/add-image" class="btn btn-primary">Upload New Image</a>
-    <form method="post" action="">
-    <table class="table">
-        <thead>
-        <tr>
-        <th>Id</th>
-        <th>Url</th>
-        <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${images}" var="item">
-                <tr>
-                  <td><c:out value="${item.id}" /></td>
-                  <td><c:out value="${item.url}" /></td>
-                  <td><button type="submit" class="btn btn-danger" formaction="/delete-image?id=${item.id}" onclick="if(!confirm('Are you sure you want to delete this item')) return false;">Delete</button></td>
-                </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+    <form method="post" action="/add-image" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="Image">Image</label>
+            <input type="file"  class="form-control-file" id="image" name="image">
+        </div>
+        <a href="/my-images" class="btn btn-secondary">Back</a>
+        <button type="submit" class="btn btn-primary">Submit</button>
     </form>
     <%@ include file="../_shared/footer.jsp" %>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
