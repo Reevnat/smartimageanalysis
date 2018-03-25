@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.view.AbstractView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import javax.servlet.ServletContext;
 import java.sql.SQLException;
@@ -40,5 +42,20 @@ public class ImagesController implements ServletContextAware {
         }
 
         return "my-images";
+    }
+
+    @RequestMapping(value="/delete-image", method = RequestMethod.POST)
+    public AbstractView deleteUsers(@RequestParam("id") Long id){
+        String connect = context.getInitParameter("sql.urlRemote");
+
+        try {
+            ImageDao dao = new ImageDao(connect);
+            dao.deleteImage(id);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return new RedirectView("/my-images");
     }
 }

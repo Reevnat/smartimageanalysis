@@ -10,12 +10,13 @@
     <%@ include file="../_shared/header.jsp" %>
     <h2>My Images</h2>
 
-    <form method="post">
+    <form method="post" action="">
     <table class="table">
         <thead>
         <tr>
         <th>Id</th>
         <th>Url</th>
+        <th></th>
         </tr>
         </thead>
         <tbody>
@@ -23,6 +24,7 @@
                 <tr>
                   <td><c:out value="${item.id}" /></td>
                   <td><c:out value="${item.url}" /></td>
+                  <td><button type="submit" class="btn btn-danger" formaction="/delete-image?id=${item.id}" onclick="if(!confirm('Are you sure you want to delete this item')) return false;">Delete</button></td>
                 </tr>
         </c:forEach>
         </tbody>

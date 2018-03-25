@@ -70,4 +70,13 @@ public class ImageDao {
             }
         }
     }
+
+    public void deleteImage(Long imageId) throws SQLException {
+        final String query = "DELETE FROM Images WHERE id = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement deleteStatement = conn.prepareStatement(query)) {
+            deleteStatement.setLong(1, imageId);
+            deleteStatement.executeUpdate();
+        }
+    }
 }
