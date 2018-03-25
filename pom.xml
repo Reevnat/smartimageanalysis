@@ -112,6 +112,11 @@
       <artifactId>commons-dbcp2</artifactId>
       <version>2.2.0</version>
     </dependency>
+    <dependency>
+      <groupId>com.google.cloud</groupId>
+      <artifactId>google-cloud-vision</artifactId>
+      <version>1.14.0</version>
+    </dependency>
   </dependencies>
   <build>
     <finalName>smartimageanalysis</finalName>
