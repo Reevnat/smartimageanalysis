@@ -16,6 +16,7 @@
         <tr>
         <th>Id</th>
         <th>Url</th>
+        <th>Labels</th>
         <th></th>
         </tr>
         </thead>
@@ -24,6 +25,7 @@
                 <tr>
                   <td><c:out value="${item.id}" /></td>
                   <td><c:out value="${item.url}" /></td>
+                  <td><c:forEach items="${item.annotations}" var="annotation"><c:out value="${annotation.description}"/><br/></c:forEach></td>
                   <td><button type="submit" class="btn btn-danger" formaction="/delete-image?id=${item.id}" onclick="if(!confirm('Are you sure you want to delete this item')) return false;">Delete</button></td>
                 </tr>
         </c:forEach>

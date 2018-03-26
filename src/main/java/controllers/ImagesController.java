@@ -2,7 +2,9 @@ package controllers;
 
 import Utils.CloudStorageHelper;
 import dao.ImageDao;
+import dao.LabelAnnotationDao;
 import entities.Image;
+import entities.LabelAnnotation;
 import entities.Result;
 import entities.User;
 import org.springframework.stereotype.Controller;
@@ -20,22 +22,31 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
 
+import static java.lang.System.out;
+
 @Controller
 public class ImagesController implements ServletContextAware {
     private ServletContext context;
+    private String connect;
 
     @Override
     public void setServletContext(final ServletContext servletContext) {
         this.context = servletContext;
+        connect = context.getInitParameter("sql.urlLocal");
     }
 
     @RequestMapping(value="/my-images", method = RequestMethod.GET)
     public String listMyImages(){
-        String connect = context.getInitParameter("sql.urlLocal");
 
         try {
             ImageDao dao = new ImageDao(connect);
             Result<Image> result = dao.listImages("");
+            for(int i=0;i<result.result.size();i++){
+                LabelAnnotationDao labelDao = new LabelAnnotationDao(connect);
+                Image image = result.result.get(i);
+                image.setAnnotations(labelDao.list("",image).result);
+                result.result.set(i,image);
+            }
 
             context.setAttribute("images", result.result);
 
@@ -49,8 +60,6 @@ public class ImagesController implements ServletContextAware {
 
     @RequestMapping(value="/delete-image", method = RequestMethod.POST)
     public AbstractView deleteImage(@RequestParam("id") Long id){
-        String connect = context.getInitParameter("sql.urlLocal");
-
         try {
             ImageDao dao = new ImageDao(connect);
             dao.deleteImage(id);
@@ -72,7 +81,6 @@ public class ImagesController implements ServletContextAware {
         CloudStorageHelper storageService = new CloudStorageHelper();
         String url = storageService.uploadFile(image,context.getInitParameter("storage.bucket"));
 
-        String connect = context.getInitParameter("sql.urlLocal");
         try {
             ImageDao dao = new ImageDao(connect);
             Image entity = new Image();

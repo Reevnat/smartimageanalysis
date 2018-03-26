@@ -1,10 +1,13 @@
 package entities;
 
+import java.util.List;
+
 public class Image {
 
     int id;
     String url;
     String category;
+    List<LabelAnnotation> annotations;
 
     public int getId() {
         return id;
@@ -28,5 +31,13 @@ public class Image {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public List<LabelAnnotation> getAnnotations() {
+        return annotations;
+    }
+
+    public void setAnnotations(List<LabelAnnotation> annotations) {
+        this.annotations = annotations;
     }
 }

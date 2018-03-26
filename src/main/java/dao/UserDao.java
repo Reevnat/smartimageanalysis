@@ -17,7 +17,7 @@ public class UserDao {
 
     public UserDao(final String url) throws SQLException{
         dataSource.setUrl(url);
-        final String createTableSql = "CREATE TABLE IF NOT EXISTS Users ( id INT NOT NULL, "
+        final String createTableSql = "CREATE TABLE IF NOT EXISTS Users ( id INT NOT NULL AUTO_INCREMENT, "
                 + "email NVARCHAR(255), PRIMARY KEY (id))";
         try (Connection conn = dataSource.getConnection()) {
             conn.createStatement().executeUpdate(createTableSql);
