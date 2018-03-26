@@ -34,7 +34,7 @@ public class HomeController implements ServletContextAware {
         connect = context.getInitParameter("sql.urlLocal");
     }
 
-    @RequestMapping(value="/home", method = RequestMethod.GET)
+    @RequestMapping(value="", method = RequestMethod.GET)
     public String viewHome(Model model){
         model.addAttribute("Test", context.getInitParameter("storage.bucket"));
 

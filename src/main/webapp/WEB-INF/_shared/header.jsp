@@ -2,10 +2,10 @@
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-toggle" aria-controls="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <a class="navbar-brand" href="#">Smart Image Analyis (SmIA)</a>
+  <a class="navbar-brand" href="/">Smart Image Analyis (SMIA)</a>
 
   <div class="collapse navbar-collapse" id="navbar-toggle">
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ">
       <li class="nav-item active">
         <a class="nav-link" href="/">Home</a>
       </li>
