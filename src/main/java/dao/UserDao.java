@@ -24,15 +24,14 @@ public class UserDao {
         }
     }
 
-    public Long createBook(User user) throws SQLException {
+    public Long create(User user) throws SQLException {
         final String createBookString = "INSERT INTO Users "
-                + "(id, email) "
-                + "VALUES (?, ?)";
+                + "(email) "
+                + "VALUES (?)";
         try (Connection conn = dataSource.getConnection();
              final PreparedStatement userInsertStatement = conn.prepareStatement(createBookString,
                      Statement.RETURN_GENERATED_KEYS)) {
-            userInsertStatement.setInt(1, user.getId());
-            userInsertStatement.setString(2, user.getEmail());
+            userInsertStatement.setString(1, user.getEmail());
 
             userInsertStatement.executeUpdate();
             try (ResultSet keys = userInsertStatement.getGeneratedKeys()) {
