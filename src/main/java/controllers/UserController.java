@@ -23,17 +23,16 @@ import java.sql.SQLException;
 public class UserController implements ServletContextAware {
 
     private ServletContext context;
+    private String connect;
 
     @Override
     public void setServletContext(final ServletContext servletContext) {
         this.context = servletContext;
-
+        connect = context.getInitParameter("sql.urlLocal");
     }
 
     @RequestMapping(value="/users", method = RequestMethod.GET)
     public String viewHome(Model model, String cursor){
-        String connect = context.getInitParameter("sql.urlRemote");
-
         try {
             UserDao dao = new UserDao(connect);
             Result<User> result = dao.listUses(cursor);
@@ -57,7 +56,6 @@ public class UserController implements ServletContextAware {
 
     @RequestMapping(value="/delete-users", method = RequestMethod.POST)
     public String deleteUsers(@RequestParam("id") Long id){
-        String connect = context.getInitParameter("sql.urlRemote");
 
         try {
             UserDao dao = new UserDao(connect);

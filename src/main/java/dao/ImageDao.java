@@ -79,4 +79,22 @@ public class ImageDao {
             deleteStatement.executeUpdate();
         }
     }
+
+    public Image getImage(Long imageId) throws  SQLException{
+        Image entity = null;
+        final String query = "SELECT id, url FROM Images WHERE id = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement findStatement = conn.prepareStatement(query)) {
+            findStatement.setLong(1, imageId);
+            try (ResultSet rs = findStatement.executeQuery()) {
+                if (rs.next()) {
+                    entity = new Image();
+                    entity.setId((rs.getInt("id")));
+                    entity.setUrl((rs.getString("url")));
+                }
+            }
+        }
+
+        return  entity;
+    }
 }

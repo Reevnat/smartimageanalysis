@@ -26,12 +26,14 @@ import java.io.IOException;
 public class HomeController implements ServletContextAware {
 
     private ServletContext context;
+    private String connect;
 
     @Override
     public void setServletContext(final ServletContext servletContext) {
         this.context = servletContext;
-
+        connect = context.getInitParameter("sql.urlLocal");
     }
+
     @RequestMapping(value="/home", method = RequestMethod.GET)
     public String viewHome(Model model){
         model.addAttribute("Test", context.getInitParameter("storage.bucket"));

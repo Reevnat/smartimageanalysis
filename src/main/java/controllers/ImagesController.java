@@ -28,11 +28,13 @@ import static java.lang.System.out;
 public class ImagesController implements ServletContextAware {
     private ServletContext context;
     private String connect;
+    private String bucket;
 
     @Override
     public void setServletContext(final ServletContext servletContext) {
         this.context = servletContext;
         connect = context.getInitParameter("sql.urlLocal");
+        bucket = context.getInitParameter("storage.bucket");
     }
 
     @RequestMapping(value="/my-images", method = RequestMethod.GET)
@@ -62,7 +64,10 @@ public class ImagesController implements ServletContextAware {
     public AbstractView deleteImage(@RequestParam("id") Long id){
         try {
             ImageDao dao = new ImageDao(connect);
+            Image image = dao.getImage(id);
             dao.deleteImage(id);
+            CloudStorageHelper storageService = new CloudStorageHelper();
+            storageService.deleteImageUrl(image.getUrl(),bucket);
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -79,7 +84,7 @@ public class ImagesController implements ServletContextAware {
     public AbstractView addImage(@RequestParam("image") MultipartFile image) throws ServletException,IOException
     {
         CloudStorageHelper storageService = new CloudStorageHelper();
-        String url = storageService.uploadFile(image,context.getInitParameter("storage.bucket"));
+        String url = storageService.uploadFile(image,bucket);
 
         try {
             ImageDao dao = new ImageDao(connect);
