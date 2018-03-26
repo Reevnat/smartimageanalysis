@@ -27,7 +27,7 @@ public class LabelAnnotationDao {
 
     public Long create(LabelAnnotation entity) throws SQLException {
         final String query = "INSERT INTO LabelAnnotations "
-                + "(description. score, imageId) "
+                + "(description, score, imageId) "
                 + "VALUES (?, ?, ?)";
         try (Connection conn = dataSource.getConnection();
              final PreparedStatement insertStatement = conn.prepareStatement(query,
