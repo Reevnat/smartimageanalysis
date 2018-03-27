@@ -17,7 +17,7 @@ public class LabelAnnotationDao {
         dataSource.setUrl(url);
         final String createTableSql = "CREATE TABLE IF NOT EXISTS LabelAnnotations ( id INT NOT NULL AUTO_INCREMENT, "
                 + "description NVARCHAR(255), score double, imageId int, PRIMARY KEY (id), CONSTRAINT `FK->imageId->id` FOREIGN KEY (`imageId`)" +
-                " REFERENCES `smia`.`images` (`id`)" +
+                " REFERENCES `smia`.`Images` (`id`)" +
                 " ON DELETE CASCADE" +
                 " ON UPDATE CASCADE)";
         try (Connection conn = dataSource.getConnection()) {
