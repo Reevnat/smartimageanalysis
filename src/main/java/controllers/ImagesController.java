@@ -1,6 +1,7 @@
 package controllers;
 
 import Utils.CloudStorageHelper;
+import Utils.CloudVisionHelper;
 import dao.ImageDao;
 import dao.LabelAnnotationDao;
 import entities.Image;
@@ -21,6 +22,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 
 import static java.lang.System.out;
 
@@ -81,7 +83,7 @@ public class ImagesController implements ServletContextAware {
     }
 
     @RequestMapping(value="/add-image", method = RequestMethod.POST)
-    public AbstractView addImage(@RequestParam("image") MultipartFile image) throws ServletException,IOException
+    public AbstractView addImage(@RequestParam("image") MultipartFile image) throws ServletException,IOException, SQLException,Exception
     {
         CloudStorageHelper storageService = new CloudStorageHelper();
         String url = storageService.uploadFile(image,bucket);
@@ -91,6 +93,39 @@ public class ImagesController implements ServletContextAware {
             Image entity = new Image();
             entity.setUrl(url);
             dao.createImage(entity);
+
+            // get annotation labels
+            List<LabelAnnotation> annotations = CloudVisionHelper.detectLabelsGcs(entity.getUrl());
+            LabelAnnotationDao annotationDao = new LabelAnnotationDao(connect);
+            annotations.forEach(a->
+            {
+                a.setImageId(entity.getId());
+                try {
+                    annotationDao.create(a);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return new RedirectView("/my-images");
+    }
+
+    @RequestMapping(value="/add-annotations", method = RequestMethod.POST)
+    public AbstractView addAnnotation(@RequestParam("id") Long id){
+        try {
+            ImageDao dao = new ImageDao(connect);
+            Image image = dao.getImage(id);
+            LabelAnnotation annotation = new LabelAnnotation();
+            annotation.setDescription("Bob");
+            annotation.setScore(0.97);
+            annotation.setImageId(image.getId());
+
+            new LabelAnnotationDao(connect).create(annotation);
 
         } catch (SQLException e) {
             e.printStackTrace();

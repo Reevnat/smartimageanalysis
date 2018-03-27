@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CloudVisionHelper {
-    public static List<LabelAnnotation> detectLabelsGcs(String gcsPath, PrintStream out, int imageId) throws Exception,
+    public static List<LabelAnnotation> detectLabelsGcs(String gcsPath) throws Exception,
             IOException {
         List<AnnotateImageRequest> requests = new ArrayList<>();
 
@@ -31,7 +31,6 @@ public class CloudVisionHelper {
 
             for (AnnotateImageResponse res : responses) {
                 if (res.hasError()) {
-                    out.printf("Error: %s\n", res.getError().getMessage());
                     return Collections.emptyList();
                 }
 
@@ -42,7 +41,6 @@ public class CloudVisionHelper {
                     LabelAnnotation label = new LabelAnnotation();
                     label.setDescription(fields.get("Description").toString());
                     label.setScore((double)fields.get("score"));
-                    label.setImageId(imageId);
 
                     result.add(label);
                 }
