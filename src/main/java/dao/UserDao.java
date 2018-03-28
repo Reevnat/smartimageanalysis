@@ -18,7 +18,7 @@ public class UserDao {
     public UserDao(final String url) throws SQLException{
         dataSource.setUrl(url);
         final String createTableSql = "CREATE TABLE IF NOT EXISTS Users ( id INT NOT NULL AUTO_INCREMENT, "
-                + "email NVARCHAR(255), PRIMARY KEY (id))";
+                + "email NVARCHAR(255), password NVARCHAR(255),PRIMARY KEY (id))";
         try (Connection conn = dataSource.getConnection()) {
             conn.createStatement().executeUpdate(createTableSql);
         }
@@ -26,7 +26,7 @@ public class UserDao {
 
     public Long create(User user) throws SQLException {
         final String createBookString = "INSERT INTO Users "
-                + "(email) "
+                + "(email, password) "
                 + "VALUES (?)";
         try (Connection conn = dataSource.getConnection();
              final PreparedStatement userInsertStatement = conn.prepareStatement(createBookString,
@@ -55,7 +55,7 @@ public class UserDao {
         if (cursor != null && !cursor.equals("")) {
             offset = Integer.parseInt(cursor);
         }
-        final String listBooksString = "SELECT id, email FROM Users ORDER BY id ASC";
+        final String listBooksString = "SELECT id, email, password FROM Users ORDER BY id ASC";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement listBooksStmt = conn.prepareStatement(listBooksString)) {
@@ -65,6 +65,7 @@ public class UserDao {
                     User user = new User();
                     user.setId((rs.getInt("id")));
                     user.setEmail((rs.getString("email")));
+                    user.setPassword((rs.getString("password")));
                     results.add(user);
                 }
             }
