@@ -23,7 +23,7 @@
   </servlet-mapping>
   <context-param>
     <param-name>sql.urlLocal</param-name>
-    <param-value>jdbc:mysql://localhost/smia?user=root&amp;password=test&amp;useSSL=false</param-value>
+    <param-value>jdbc:mysql://localhost/smia?user=root&amp;password=image&amp;useSSL=false</param-value>
   </context-param>
   <context-param>
     <param-name>sql.urlRemote</param-name>
