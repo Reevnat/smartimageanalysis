@@ -47,13 +47,6 @@ public class UserController implements ServletContextAware {
         return "users";
     }
 
-    @RequestMapping(value="/register", method = RequestMethod.GET)
-    public String register(){
-
-
-        return "register";
-    }
-
     @RequestMapping(value="/delete-users", method = RequestMethod.POST)
     public String deleteUsers(@RequestParam("id") Long id){
 
