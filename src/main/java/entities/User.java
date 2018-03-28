@@ -30,8 +30,9 @@ public class User implements Serializable{
     @Column(name = "email")
     String email;
 
+    @Column(name = "password")
     String password;
-    
+
     public int getId() {
         return id;
     }
@@ -48,7 +49,9 @@ public class User implements Serializable{
         this.email = email;
     }
 
-    public String getPassword() { return password;}
+    public String getPassword() {
+        return password;
+    }
 
     public void setPassword(String password){this.password = password;}
 }

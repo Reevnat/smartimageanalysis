@@ -2,66 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc260f13-9b00-4f7f-b1ed-33f968612bee" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_6_0_6.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/SmartImageAnalysis.iml" afterPath="$PROJECT_DIR$/SmartImageAnalysis.iml" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/UserDao.java" afterPath="$PROJECT_DIR$/src/main/java/dao/UserDao.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/entities/User.java" afterPath="$PROJECT_DIR$/src/main/java/entities/User.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/appengine-generated/app.yaml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/appengine-web.xm" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/appengine-web.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/classes/controllers/HomeController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/classes/source-context.json" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/dispatcher-servlet.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/jsp/home.jsp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/_ah_compiled_jsps-0000.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/aopalliance-1.0.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/commons-logging-1.1.3.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/org.apache.taglibs.taglibs-standard-spec-1.2.5.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/org.eclipse.jdt.core.compiler.ecj-4.4.2.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/org.eclipse.jetty.apache-jsp-9.3.18.v20170406-nolog.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/org.mortbay.jasper.apache-el-8.0.33.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/org.mortbay.jasper.apache-jsp-8.0.33.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/spring-aop-4.0.2.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/spring-beans-4.0.2.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/spring-context-4.0.2.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/spring-core-4.0.2.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/spring-expression-4.0.2.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/spring-web-4.0.2.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/lib/spring-webmvc-4.0.2.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/WEB-INF/web.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/__static__/app.yaml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/app.yaml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/appengine-staging/index.jsp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controllers/HomeController.class" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis.war" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/appengine-generated/datastore-indexes-auto.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/appengine-web.xm" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/appengine-web.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/classes/controllers/HomeController.class" afterPath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/classes/controllers/HomeController.class" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/dispatcher-servlet.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/jsp/home.jsp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/lib/aopalliance-1.0.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/lib/commons-logging-1.1.3.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/lib/org.apache.taglibs.taglibs-standard-impl-1.2.5.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/lib/org.apache.taglibs.taglibs-standard-spec-1.2.5.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/lib/spring-aop-4.0.2.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/lib/spring-beans-4.0.2.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/lib/spring-context-4.0.2.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/lib/spring-core-4.0.2.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/lib/spring-expression-4.0.2.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/lib/spring-web-4.0.2.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/lib/spring-webmvc-4.0.2.RELEASE.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/WEB-INF/web.xml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/app.yaml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/smartimageanalysis/index.jsp" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/work/jsp/org/apache/jsp/WEB_002dINF/jsp/home_jsp.class" afterPath="$PROJECT_DIR$/target/work/jsp/org/apache/jsp/WEB_002dINF/jsp/home_jsp.class" />
-      <change beforePath="$PROJECT_DIR$/target/work/jsp/org/apache/jsp/index_jsp.class" afterPath="" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -107,8 +49,8 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/controllers/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="714">
-              <caret line="59" column="13" lean-forward="false" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+            <state relative-caret-position="459">
+              <caret line="44" column="9" lean-forward="true" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -117,18 +59,18 @@
       <file leaf-file-name="UserDao.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/dao/UserDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="544">
-              <caret line="43" column="32" lean-forward="true" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
+            <state relative-caret-position="170">
+              <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
               <folding>
-                <marker date="1522246680457" expanded="true" signature="539:571" ph=" CREATE statement" />
-                <marker date="1522246680457" expanded="true" signature="909:929" ph=" INSERT statement (USERS)" />
-                <marker date="1522246680457" expanded="true" signature="909:955" ph=" INSERT statement (USERS)" />
-                <marker date="1522246680457" expanded="true" signature="909:956" ph=" INSERT statement (USERS)" />
-                <marker date="1522246680457" expanded="true" signature="909:983" ph=" INSERT statement (USERS)" />
-                <marker date="1522246680457" expanded="true" signature="909:987" ph=" INSERT statement (USERS)" />
-                <marker date="1522246680457" expanded="true" signature="1596:1626" ph=" DELETE statement (USERS)" />
-                <marker date="1522246680457" expanded="true" signature="2132:2175" ph=" SELECT statement (USERS)" />
-                <marker date="1522246680457" expanded="true" signature="2774:2793" ph=" SELECT statement" />
+                <marker date="1522248558085" expanded="true" signature="539:571" ph=" CREATE statement" />
+                <marker date="1522248558085" expanded="true" signature="932:952" ph=" INSERT statement (USERS)" />
+                <marker date="1522248558085" expanded="true" signature="932:988" ph=" INSERT statement (USERS)" />
+                <marker date="1522248558085" expanded="true" signature="932:989" ph=" INSERT statement (USERS)" />
+                <marker date="1522248558085" expanded="true" signature="932:1016" ph=" INSERT statement (USERS)" />
+                <marker date="1522248558085" expanded="true" signature="932:1020" ph=" INSERT statement (USERS)" />
+                <marker date="1522248558085" expanded="true" signature="1629:1659" ph=" DELETE statement (USERS)" />
+                <marker date="1522248558085" expanded="true" signature="2165:2218" ph=" SELECT statement (USERS)" />
+                <marker date="1522248558085" expanded="true" signature="2883:2902" ph=" SELECT statement" />
               </folding>
             </state>
           </provider>
@@ -137,8 +79,8 @@
       <file leaf-file-name="User.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/entities/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="33" column="4" lean-forward="false" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+            <state relative-caret-position="561">
+              <caret line="33" column="20" lean-forward="true" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#587#614#0" expanded="true" />
@@ -225,7 +167,7 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-7" />
     <option name="width" value="1294" />
     <option name="height" value="1407" />
@@ -456,7 +398,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1294" height="1407" extended-state="0" />
+    <frame x="-8" y="-8" width="2576" height="1416" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -466,14 +408,14 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32998455" sideWeight="0.5086072" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25821596" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32998455" sideWeight="0.4913928" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3277053" sideWeight="0.50742185" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12890625" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3277053" sideWeight="0.49257812" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3599374" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1796875" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Learn" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -882,34 +824,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/controllers/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="714">
-          <caret line="59" column="13" lean-forward="false" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+        <state relative-caret-position="459">
+          <caret line="44" column="9" lean-forward="true" selection-start-line="44" selection-start-column="9" selection-end-line="44" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/dao/UserDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="544">
-          <caret line="43" column="32" lean-forward="true" selection-start-line="43" selection-start-column="32" selection-end-line="43" selection-end-column="32" />
+        <state relative-caret-position="170">
+          <caret line="20" column="25" lean-forward="false" selection-start-line="20" selection-start-column="25" selection-end-line="20" selection-end-column="25" />
           <folding>
-            <marker date="1522246680457" expanded="true" signature="539:571" ph=" CREATE statement" />
-            <marker date="1522246680457" expanded="true" signature="909:929" ph=" INSERT statement (USERS)" />
-            <marker date="1522246680457" expanded="true" signature="909:955" ph=" INSERT statement (USERS)" />
-            <marker date="1522246680457" expanded="true" signature="909:956" ph=" INSERT statement (USERS)" />
-            <marker date="1522246680457" expanded="true" signature="909:983" ph=" INSERT statement (USERS)" />
-            <marker date="1522246680457" expanded="true" signature="909:987" ph=" INSERT statement (USERS)" />
-            <marker date="1522246680457" expanded="true" signature="1596:1626" ph=" DELETE statement (USERS)" />
-            <marker date="1522246680457" expanded="true" signature="2132:2175" ph=" SELECT statement (USERS)" />
-            <marker date="1522246680457" expanded="true" signature="2774:2793" ph=" SELECT statement" />
+            <marker date="1522248558085" expanded="true" signature="539:571" ph=" CREATE statement" />
+            <marker date="1522248558085" expanded="true" signature="932:952" ph=" INSERT statement (USERS)" />
+            <marker date="1522248558085" expanded="true" signature="932:988" ph=" INSERT statement (USERS)" />
+            <marker date="1522248558085" expanded="true" signature="932:989" ph=" INSERT statement (USERS)" />
+            <marker date="1522248558085" expanded="true" signature="932:1016" ph=" INSERT statement (USERS)" />
+            <marker date="1522248558085" expanded="true" signature="932:1020" ph=" INSERT statement (USERS)" />
+            <marker date="1522248558085" expanded="true" signature="1629:1659" ph=" DELETE statement (USERS)" />
+            <marker date="1522248558085" expanded="true" signature="2165:2218" ph=" SELECT statement (USERS)" />
+            <marker date="1522248558085" expanded="true" signature="2883:2902" ph=" SELECT statement" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/entities/User.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="33" column="4" lean-forward="false" selection-start-line="33" selection-start-column="4" selection-end-line="33" selection-end-column="4" />
+        <state relative-caret-position="561">
+          <caret line="33" column="20" lean-forward="true" selection-start-line="33" selection-start-column="20" selection-end-line="33" selection-end-column="20" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#587#614#0" expanded="true" />
