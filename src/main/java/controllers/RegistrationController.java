@@ -3,6 +3,7 @@ package controllers;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import entities.Login;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +15,6 @@ import entities.User;
 import service.UserService;
 
 @Controller
-
 public class RegistrationController {
 
     @Autowired
@@ -31,10 +31,13 @@ public class RegistrationController {
     @RequestMapping(value = "/registerProcess", method = RequestMethod.POST)
 
     public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
-                                @ModelAttribute("user") User user) {
+                                @ModelAttribute("user") User user, @ModelAttribute("login") Login login) {
 
         userService.register(user);
 
-        return new ModelAndView("login", "email", user.getEmail());
+        //return new ModelAndView("/login", "email", user.getEmail());
+        ModelAndView mav = new ModelAndView("login");
+        mav.addObject("message", "Registration Successful!");
+        return mav;
     }
 }

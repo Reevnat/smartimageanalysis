@@ -22,10 +22,7 @@ public class LoginDAOImpl implements LoginDAO {
     JdbcTemplate jdbcTemplate;
 
     public void register(User user) {
-
-        String sql = "insert into users values(?,?,?)";
-
-        jdbcTemplate.update(sql, new Object[] { user.getId(),user.getEmail(), user.getPassword()});
+        jdbcTemplate.update("INSERT INTO users(email, password) VALUES(?,?)", user.getEmail(), user.getPassword());
     }
 
     public User validateUser(Login login) {

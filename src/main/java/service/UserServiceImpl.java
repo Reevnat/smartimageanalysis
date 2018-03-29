@@ -10,14 +10,14 @@ import entities.User;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    public LoginDAO userDao;
+    public LoginDAO LoginDAO;
 
     public void register(User user) {
-        userDao.register(user);
+        LoginDAO.register(user);
     }
 
     public User validateUser(Login login) {
-        return userDao.validateUser(login);
+        return LoginDAO.validateUser(login);
     }
 
 }
