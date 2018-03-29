@@ -36,6 +36,9 @@
             									<div class="form-group">
             										<form:input type="password" path="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password"/>
             									</div>
+                                                <div class="form-group">
+            										<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+            									</div>
             									<div class="form-group">
             										<div class="row">
             											<div class="col-sm-6 col-sm-offset-0">
