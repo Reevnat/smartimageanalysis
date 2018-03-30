@@ -27,7 +27,7 @@
   </context-param>
   <context-param>
     <param-name>sql.urlRemote</param-name>
-    <param-value>jdbc:google:mysql://smia-198622:us-central1:smia/smia?user=root&amp;password=MAp8bUeH4w</param-value>
+    <param-value>jdbc:mysql://google/smia?cloudSqlInstance=smia-198622:us-central1:smia&amp;socketFactory=com.google.cloud.sql.mysql.SocketFactory&amp;user=root&amp;password=MAp8bUeH4w&amp;useSSL=false</param-value>
   </context-param>
   <context-param>
     <param-name>storage.bucket</param-name>
