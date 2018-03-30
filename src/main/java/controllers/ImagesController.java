@@ -7,9 +7,7 @@ import dao.LabelAnnotationDao;
 import entities.Image;
 import entities.LabelAnnotation;
 import entities.Result;
-import entities.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,8 +21,6 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
-
-import static java.lang.System.out;
 
 @Controller
 public class ImagesController implements ServletContextAware {
@@ -77,6 +73,7 @@ public class ImagesController implements ServletContextAware {
 
         return new RedirectView("/my-images");
     }
+
     @RequestMapping(value="/add-image", method = RequestMethod.GET)
     public String addImage(){
         return "add-image";
@@ -95,7 +92,8 @@ public class ImagesController implements ServletContextAware {
             dao.createImage(entity);
 
             // get annotation labels
-            List<LabelAnnotation> annotations = CloudVisionHelper.detectLabelsGcs(entity.getUrl());
+            String path = new CloudStorageHelper().getGcsPath(entity.getUrl(),bucket);
+            List<LabelAnnotation> annotations = CloudVisionHelper.detectLabels(path);
             LabelAnnotationDao annotationDao = new LabelAnnotationDao(connect);
             annotations.forEach(a->
             {
@@ -116,16 +114,24 @@ public class ImagesController implements ServletContextAware {
     }
 
     @RequestMapping(value="/add-annotations", method = RequestMethod.POST)
-    public AbstractView addAnnotation(@RequestParam("id") Long id){
+    public AbstractView addAnnotation(@RequestParam("id") Long id) throws  Exception{
         try {
             ImageDao dao = new ImageDao(connect);
             Image image = dao.getImage(id);
             LabelAnnotation annotation = new LabelAnnotation();
-            annotation.setDescription("Bob");
-            annotation.setScore(0.97);
-            annotation.setImageId(image.getId());
 
-            new LabelAnnotationDao(connect).create(annotation);
+            String path = new CloudStorageHelper().getGcsPath(image.getUrl(),bucket);
+            List<LabelAnnotation> annotations = CloudVisionHelper.detectLabels(path);
+            LabelAnnotationDao annotationDao = new LabelAnnotationDao(connect);
+            annotations.forEach(a->
+            {
+                a.setImageId(image.getId());
+                try {
+                    annotationDao.create(a);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            });
 
         } catch (SQLException e) {
             e.printStackTrace();

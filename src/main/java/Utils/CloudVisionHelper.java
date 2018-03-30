@@ -1,26 +1,21 @@
 package Utils;
 
 import com.google.cloud.vision.v1.*;
-import com.google.protobuf.Descriptors;
 import entities.LabelAnnotation;
 
-import java.io.IOException;
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 public class CloudVisionHelper {
-    public static List<LabelAnnotation> detectLabelsGcs(String gcsPath) throws Exception,
-            IOException {
+
+    public static List<LabelAnnotation> detectLabels(String gcsPath) throws Exception {
         List<AnnotateImageRequest> requests = new ArrayList<>();
 
         ImageSource imgSource = ImageSource.newBuilder().setGcsImageUri(gcsPath).build();
         Image img = Image.newBuilder().setSource(imgSource).build();
         Feature feat = Feature.newBuilder().setType(Feature.Type.LABEL_DETECTION).build();
-        AnnotateImageRequest request =
-                AnnotateImageRequest.newBuilder().addFeatures(feat).setImage(img).build();
+        AnnotateImageRequest request = AnnotateImageRequest.newBuilder().addFeatures(feat).setImage(img).build();
         requests.add(request);
 
         List<LabelAnnotation> result = new ArrayList<>();
@@ -34,13 +29,11 @@ public class CloudVisionHelper {
                     return Collections.emptyList();
                 }
 
-                // For full list of available annotations, see http://g.co/cloud/vision/docs
                 for (EntityAnnotation annotation : res.getLabelAnnotationsList()) {
 
-                    Map<Descriptors.FieldDescriptor,Object> fields = annotation.getAllFields();
                     LabelAnnotation label = new LabelAnnotation();
-                    label.setDescription(fields.get("Description").toString());
-                    label.setScore((double)fields.get("score"));
+                    label.setDescription(annotation.getDescription());
+                    label.setScore(annotation.getScore());
 
                     result.add(label);
                 }
