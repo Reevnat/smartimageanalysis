@@ -27,10 +27,9 @@ public class LoginDAOImpl implements LoginDAO {
 
     public User validateUser(Login login) {
 
-        String sql = "select * from users where email='" + login.getEmail() + "' and password='" + login.getPassword()
-                + "'";
+        String sql = "select * from users where email=? and password=?";
 
-        List<User> users = jdbcTemplate.query(sql, new UserMapper());
+        List<User> users = jdbcTemplate.query(sql,new Object[]{login.getEmail(), login.getPassword()}, new UserMapper());
 
         return users.size() > 0 ? users.get(0) : null;
     }
