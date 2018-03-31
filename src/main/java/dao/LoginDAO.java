@@ -10,4 +10,6 @@ public interface LoginDAO {
 
     User validateUser(Login login);
 
+    User findByUsername(String username);
+
 }

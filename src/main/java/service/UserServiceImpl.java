@@ -20,4 +20,8 @@ public class UserServiceImpl implements UserService {
         return LoginDAO.validateUser(login);
     }
 
+    public User findByUsername(String username)
+    {
+        return LoginDAO.findByUsername(username);
+    }
 }

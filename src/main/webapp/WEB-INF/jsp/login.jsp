@@ -49,17 +49,17 @@
             					<div class="panel-body">
             						<div class="row">
             							<div class="col-lg-12">
-            								<form:form id="login-form" modelAttribute="login" action="loginProcess" method="post" role="form" style="display: block;">
+            								<form id="login-form" action="login-process" method="post" role="form" style="display: block;">
             									<div class="form-group">
-            										<form:input type="text" path="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value=""/>
+            										<input type="text" name="email" id="email" tabindex="1" class="form-control" placeholder="Email" value=""/>
             									</div>
             									<div class="form-group">
-            										<form:input type="password" path="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password"/>
+            										<input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password"/>
             									</div>
             									<div class="form-group">
             										<div class="row">
             											<div class="col-sm-6 col-sm-offset-0">
-            											    <form:button id="login" name="login" class="btn btn-blue-grey btn-lg">Login</form:button>
+            											    <button id="login" name="login" class="btn btn-blue-grey btn-lg">Login</button>
             											</div>
             										</div>
             									</div>
@@ -74,12 +74,12 @@
                                                 	<div class="row">
                                                 		<div class="col-lg-12">
                                                 			<div class="text-center">
-                                                				<button type="button" class="btn btn-outline-danger waves-effect">${message}</button>
+                                                				<button type="button" class="btn btn-outline-danger waves-effect">${error}</button>
                                                 			</div>
                                                 		</div>
                                                 	</div>
                                                 </div>
-            								</form:form>
+            								</form>
             							</div>
             						</div>
             					</div>

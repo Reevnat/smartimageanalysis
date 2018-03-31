@@ -34,6 +34,14 @@ public class LoginDAOImpl implements LoginDAO {
 
         return users.size() > 0 ? users.get(0) : null;
     }
+
+    public  User findByUsername(String username){
+        String query = "SELECT id, email, password FROM users WHERE email=? LIMIT 1";
+
+        List<User> users = jdbcTemplate.query(query,new Object[]{username}, new UserMapper());
+
+        return users.size()> 0 ? users.get(0) : null;
+    }
 }
 
 class UserMapper implements RowMapper<User> {
