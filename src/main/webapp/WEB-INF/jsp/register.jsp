@@ -42,14 +42,14 @@
             									<div class="form-group">
             										<div class="row">
             											<div class="col-sm-6 col-sm-offset-0">
-            											    <form:button id="register" name="register" class="btn btn-blue-grey btn-lg">Submit</form:button>
+            											    <form:button id="register" name="register" class="btn btn-success btn-lg">Submit</form:button>
             											</div>
             										</div>
             									</div>
                                                 <div class="form-group">
             										<div class="row">
             											<div class="col-sm-6 col-sm-offset-0">
-            											    <button type="button" class="btn btn-light-green btn-lg" onclick="window.open('/login','_self')">Back</button>
+            											    <button type="button" class="btn btn-warning btn-lg" onclick="window.open('/login','_self')">Back</button>
             											</div>
             										</div>
             									</div>
