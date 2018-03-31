@@ -13,12 +13,14 @@
       <li class="nav-item">
         <a class="nav-link" href="/my-images">My Images</a>
       </li>
+      <sec:authorize access="hasRole('ROLE_ADMIN')">
        <li class="nav-item">
               <a class="nav-link" href="/users">Users</a>
        </li>
        <li class="nav-item">
              <a class="nav-link" href="/categories">Categories</a>
         </li>
+        </sec:authorize>
     </ul>
     <span class="navbar-text">
           Hello <sec:authentication property="principal" />,

@@ -7,10 +7,14 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 import service.UserService;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 @Component
 public class UserAuthenticationProvider implements AuthenticationProvider {
@@ -29,8 +33,12 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
 
         if(user != null && user.getPassword().equals(password))
         {
+            List<GrantedAuthority> authority = new ArrayList<GrantedAuthority>();
+            authority.add(new SimpleGrantedAuthority("ROLE_" + "USER"));
+            if(user.isAdmin())
+                authority.add(new SimpleGrantedAuthority("ROLE_" + "ADMIN"));
             return new UsernamePasswordAuthenticationToken
-                    (username, password, Collections.emptyList());
+                    (username, password, authority);
         } else {
             throw new
                     BadCredentialsException("External system authentication failed");

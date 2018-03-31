@@ -36,7 +36,7 @@ public class LoginDAOImpl implements LoginDAO {
     }
 
     public  User findByUsername(String username){
-        String query = "SELECT id, email, password FROM users WHERE email=? LIMIT 1";
+        String query = "SELECT id, email, password,isAdmin FROM users WHERE email=? LIMIT 1";
 
         List<User> users = jdbcTemplate.query(query,new Object[]{username}, new UserMapper());
 
@@ -51,6 +51,7 @@ class UserMapper implements RowMapper<User> {
 
         user.setEmail(rs.getString("email"));
         user.setPassword(rs.getString("password"));
+        user.setAdmin(rs.getBoolean("isAdmin"));
 
         return user;
     }
