@@ -16,20 +16,24 @@ public class ImageDao {
     {
         dataSource.setUrl(url);
         final String createTableSql = "CREATE TABLE IF NOT EXISTS Images ( id INT NOT NULL AUTO_INCREMENT, "
-                + "url NVARCHAR(255),  PRIMARY KEY (id))";
+                + "url NVARCHAR(255), uploadedById int,  PRIMARY KEY (id), CONSTRAINT `FK->uploadedById->id` FOREIGN KEY (`uploadedById`)"
+                + " REFERENCES `smia`.`Users` (`id`)"
+                + " ON DELETE CASCADE"
+                + " ON UPDATE CASCADE)";
         try (Connection conn = dataSource.getConnection()) {
             conn.createStatement().executeUpdate(createTableSql);
         }
     }
 
-    public Long createImage(Image image) throws SQLException {
+    public Long createImage(Image image, User uploadedBy) throws SQLException {
         final String query = "INSERT INTO Images "
-                + "(url) "
-                + "VALUES (?)";
+                + "(url, uploadedById) "
+                + "VALUES (?,?)";
         try (Connection conn = dataSource.getConnection();
              final PreparedStatement insertStatement = conn.prepareStatement(query,
                      Statement.RETURN_GENERATED_KEYS)) {
             insertStatement.setString(1, image.getUrl());
+            insertStatement.setInt(2, uploadedBy.getId());
 
             insertStatement.executeUpdate();
             try (ResultSet keys = insertStatement.getGeneratedKeys()) {
@@ -39,15 +43,16 @@ public class ImageDao {
         }
     }
 
-    public Result<Image> listImages(String cursor) throws SQLException {
+    public Result<Image> listImages(String cursor, User uploadedBy) throws SQLException {
         int offset = 0;
         if (cursor != null && !cursor.equals("")) {
             offset = Integer.parseInt(cursor);
         }
-        final String query = "SELECT id, url FROM Images ORDER BY id ASC";
+        final String query = "SELECT id, url FROM Images WHERE uploadedById = ? ORDER BY id ASC";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement listStatement = conn.prepareStatement(query)) {
+            listStatement.setInt(1, uploadedBy.getId());
             List<Image> results = new ArrayList<>();
             try (ResultSet rs = listStatement.executeQuery()) {
                 while (rs.next()) {
@@ -82,7 +87,7 @@ public class ImageDao {
 
     public Image getImage(Long imageId) throws  SQLException{
         Image entity = null;
-        final String query = "SELECT id, url FROM Images WHERE id = ?";
+        final String query = "SELECT id, url, uploadedById FROM Images WHERE id = ?";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement findStatement = conn.prepareStatement(query)) {
             findStatement.setLong(1, imageId);
@@ -91,6 +96,7 @@ public class ImageDao {
                     entity = new Image();
                     entity.setId((rs.getInt("id")));
                     entity.setUrl((rs.getString("url")));
+                    entity.setUploadedById(rs.getInt("uploadedById"));
                 }
             }
         }

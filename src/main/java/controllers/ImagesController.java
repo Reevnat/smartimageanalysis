@@ -4,9 +4,14 @@ import Utils.CloudStorageHelper;
 import Utils.CloudVisionHelper;
 import dao.ImageDao;
 import dao.LabelAnnotationDao;
+import dao.UserDao;
 import entities.Image;
 import entities.LabelAnnotation;
 import entities.Result;
+import entities.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,6 +20,8 @@ import org.springframework.web.context.ServletContextAware;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.view.AbstractView;
 import org.springframework.web.servlet.view.RedirectView;
+import service.UserService;
+import service.UserServiceImpl;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -28,6 +35,9 @@ public class ImagesController implements ServletContextAware {
     private String connect;
     private String bucket;
 
+    @Autowired
+    private UserService userService;
+
     @Override
     public void setServletContext(final ServletContext servletContext) {
         this.context = servletContext;
@@ -35,12 +45,18 @@ public class ImagesController implements ServletContextAware {
         bucket = context.getInitParameter("storage.bucket");
     }
 
+    User getPrincipal(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String currentPrincipalName = authentication.getName();
+        return userService.findByUsername(currentPrincipalName);
+    }
+
     @RequestMapping(value="/my-images", method = RequestMethod.GET)
     public String listMyImages(){
 
         try {
             ImageDao dao = new ImageDao(connect);
-            Result<Image> result = dao.listImages("");
+            Result<Image> result = dao.listImages("", getPrincipal());
             for(int i=0;i<result.result.size();i++){
                 LabelAnnotationDao labelDao = new LabelAnnotationDao(connect);
                 Image image = result.result.get(i);
@@ -89,7 +105,7 @@ public class ImagesController implements ServletContextAware {
             ImageDao dao = new ImageDao(connect);
             Image entity = new Image();
             entity.setUrl(url);
-            dao.createImage(entity);
+            dao.createImage(entity,getPrincipal());
 
             // get annotation labels
             String path = new CloudStorageHelper().getGcsPath(entity.getUrl(),bucket);

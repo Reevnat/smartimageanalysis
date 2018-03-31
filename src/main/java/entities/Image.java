@@ -7,6 +7,7 @@ public class Image {
     int id;
     String url;
     String category;
+    int uploadedById;
     List<LabelAnnotation> annotations;
 
     public int getId() {
@@ -39,5 +40,13 @@ public class Image {
 
     public void setAnnotations(List<LabelAnnotation> annotations) {
         this.annotations = annotations;
+    }
+
+    public int getUploadedById() {
+        return uploadedById;
+    }
+
+    public void setUploadedById(int uploadedById) {
+        this.uploadedById = uploadedById;
     }
 }
