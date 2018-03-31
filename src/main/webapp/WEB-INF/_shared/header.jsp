@@ -16,6 +16,9 @@
               <a class="nav-link" href="/users">Users</a>
        </li>
        <li class="nav-item">
+             <a class="nav-link" href="/categories">Categories</a>
+        </li>
+       <li class="nav-item">
              <a class="nav-link" href="/logout">Logout</a>
       </li>
     </ul>
