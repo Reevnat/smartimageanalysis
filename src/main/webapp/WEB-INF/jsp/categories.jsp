@@ -9,18 +9,19 @@
 </head>
 <body>
     <%@ include file="../_shared/header.jsp" %>
-    <div class="cover-container d-flex h-75 p-3 mx-auto flex-column">
-            <div class="view-area">
+    <div class="small-divider">
+    <div class="view-area">
     <h2>Categories</h2>
-    <a href="/add-category" class="btn btn-primary">Add New Category</a>
+    <a href="/add-category" class="btn btn-primary">Add New Category</a><br></br>
     <form method="post" action="">
     <table class="table table-bordered">
-        <thead>
-        <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Labels</th>
-        </tr>
+        <thead class="thead-light">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Labels</th>
+                <th>Option</th>
+            </tr>
         </thead>
         <tbody>
         <c:forEach items="${result}" var="item">
@@ -28,9 +29,9 @@
                   <td><c:out value="${item.id}" /></td>
                   <td><c:out value="${item.name}" /></td>
                   <td>
-                  <a href="/add-label?categoryId=${item.id}" class="btn btn-info btn-sm">Add New Label</a><br>
+                  <a href="/add-label?categoryId=${item.id}" class="btn btn-info btn-sm">Add New Label</a><br></br>
                   <table class="table table-sm">
-                    <thead>
+                    <thead class="thead-light">
                       <tr>
                         <th scope="col">Label</th>
                         <th scope="col">Threshold</th>
