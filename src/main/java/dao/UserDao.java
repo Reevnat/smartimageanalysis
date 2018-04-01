@@ -50,6 +50,17 @@ public class UserDao {
         }
     }
 
+    public void updateUser(Long userId, String password, boolean isAdmin) throws SQLException{
+        final String updateUserQuery = "UPDATE Users SET password = ?, isAdmin = ? WHERE id = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement updateUserStatement = conn.prepareStatement(updateUserQuery)) {
+            updateUserStatement.setString(1, password);
+            updateUserStatement.setBoolean(2, isAdmin);
+            updateUserStatement.setLong(3, userId);
+            updateUserStatement.executeUpdate();
+        }
+    }
+
     public Result<User> listUses(String cursor) throws SQLException {
         int offset = 0;
         if (cursor != null && !cursor.equals("")) {
@@ -81,5 +92,24 @@ public class UserDao {
                 }
             }
         }
+    }
+
+    public User getUser (long userId) throws SQLException{
+        User entity = null;
+        final String query = "SELECT id, email, password, isAdmin FROM users WHERE id = ?";
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement findStatement = conn.prepareStatement(query)) {
+            findStatement.setLong(1, userId);
+            try (ResultSet rs = findStatement.executeQuery()) {
+                if (rs.next()) {
+                    entity = new User();
+                    entity.setId((rs.getInt("id")));
+                    entity.setEmail(rs.getString("email"));
+                    entity.setPassword((rs.getString("password")));
+                    entity.setAdmin(rs.getBoolean("isAdmin"));
+                }
+            }
+        }
+        return  entity;
     }
 }

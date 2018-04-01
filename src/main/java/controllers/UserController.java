@@ -61,4 +61,34 @@ public class UserController implements ServletContextAware {
 
         return "users";
     }
+
+    @RequestMapping(value="/edit-user", method = RequestMethod.POST)
+    public String editUser(@RequestParam("id") Long id,String password, boolean isAdmin){
+
+        try {
+            UserDao dao = new UserDao(connect);
+            dao.updateUser(id, password, isAdmin);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "users";
+    }
+
+    @RequestMapping(value="/edit-user", method = RequestMethod.GET)
+    public String editUser(@RequestParam("id") Long id){
+
+        try {
+            UserDao dao = new UserDao(connect);
+            User user = dao.getUser(id);
+            this.context.setAttribute("id",user.getId());
+            this.context.setAttribute("password",user.getPassword());
+            this.context.setAttribute("isAdmin", user.isAdmin());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "editUser";
+    }
 }
