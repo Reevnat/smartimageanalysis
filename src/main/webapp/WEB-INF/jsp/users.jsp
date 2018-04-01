@@ -9,27 +9,27 @@
 </head>
 <body>
 <%@ include file="../_shared/header.jsp" %>
-<div class="cover-container d-flex h-75 p-3 mx-auto flex-column">
+        <div class="small-divider">
         <div class="view-area">
-<h1>List of usrs</h1>
+<h1>List of users</h1>
 <form action="/" method="post">
-<table>
-<thead>
-<tr>
-<th>
-Id
-</th>
-<th>Email</th>
-<th><th>
-</tr>
-</thead>
-<c:forEach items="${users}" var="user">
-        <tr>
-          <td><c:out value="${user.id}" /><td>
-          <td><c:out value="${user.email}" /><td>
-          <td><button type="submit" class="btn btn-danger" formation="/smartimageanalysis/delete-users?id=${user.id}">Delete</button></td>
-        </tr>
-</c:forEach>
+<table class="table table-striped table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Email</th>
+      <th scope="col">Option</th>
+    </tr>
+  </thead>
+  <tbody>
+  <c:forEach items="${users}" var="user">
+          <tr>
+            <th scope+"row"><c:out value="${user.id}" /></th>
+            <td><c:out value="${user.email}" /></td>
+            <td align="right"><button type="submit" class="btn btn-danger" formaction="/smartimageanalysis/delete-users?id=${user.id}">Delete</button></td>
+          </tr>
+  </c:forEach>
+  </tbody>
 </table>
 </form>
 </div>

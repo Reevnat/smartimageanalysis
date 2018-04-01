@@ -18,6 +18,7 @@
       </div>
       <button type="submit" class="btn btn-primary">Search</button>
     </form>
+    <div class="view-area">
     <ul class="list-unstyled">
         <c:forEach items="${result}" var="item">
              <li class="media">
@@ -27,8 +28,10 @@
                   Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
                 </div>
               </li>
+              <br></br>
         </c:forEach>
     </ul>
+    </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"  crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"  crossorigin="anonymous"></script>

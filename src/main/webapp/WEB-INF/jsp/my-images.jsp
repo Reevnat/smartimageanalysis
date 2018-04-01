@@ -9,13 +9,13 @@
 </head>
 <body>
     <%@ include file="../_shared/header.jsp" %>
-    <div class="cover-container d-flex h-75 p-3 mx-auto flex-column">
+    <div class="small-divider">
     <div class="view-area">
     <h2>My Images</h2>
-    <a href="/add-image" class="btn btn-primary">Upload New Image</a>
+    <a href="/add-image" class="btn btn-primary">Upload New Image</a><br></br>
     <form method="post" action="">
     <table class="table">
-        <thead>
+        <thead class="thead-light">
         <tr>
         <th>Id</th>
         <th>Url</th>
