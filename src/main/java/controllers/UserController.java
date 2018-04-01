@@ -3,20 +3,16 @@ package controllers;
 import dao.UserDao;
 import entities.Result;
 import entities.User;
-import org.omg.CORBA.Environment;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.ServletContextAware;
+import org.springframework.web.servlet.view.AbstractView;
+import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.Servlet;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
 import java.sql.SQLException;
 
 @Controller
@@ -49,7 +45,7 @@ public class UserController implements ServletContextAware {
     }
 
     @RequestMapping(value="/delete-users", method = RequestMethod.POST)
-    public String deleteUsers(@RequestParam("id") Long id){
+    public AbstractView deleteUsers(@RequestParam("id") Long id){
 
         try {
             UserDao dao = new UserDao(connect);
@@ -59,11 +55,13 @@ public class UserController implements ServletContextAware {
             e.printStackTrace();
         }
 
-        return "users";
+
+
+        return new RedirectView("/users");
     }
 
     @RequestMapping(value="/edit-user", method = RequestMethod.POST)
-    public String editUser(@RequestParam("id") Long id,String password, boolean isAdmin){
+    public AbstractView editUser(@RequestParam("id") Long id, String password, boolean isAdmin){
 
         try {
             UserDao dao = new UserDao(connect);
@@ -73,7 +71,7 @@ public class UserController implements ServletContextAware {
             e.printStackTrace();
         }
 
-        return "users";
+        return new RedirectView("/users");
     }
 
     @RequestMapping(value="/edit-user", method = RequestMethod.GET)
@@ -83,6 +81,7 @@ public class UserController implements ServletContextAware {
             UserDao dao = new UserDao(connect);
             User user = dao.getUser(id);
             this.context.setAttribute("id",user.getId());
+            this.context.setAttribute("username",user.getEmail());
             this.context.setAttribute("password",user.getPassword());
             this.context.setAttribute("isAdmin", user.isAdmin());
         } catch (SQLException e) {

@@ -18,7 +18,8 @@
     <tr>
       <th scope="col">Id</th>
       <th scope="col">Email</th>
-      <th scope="col">Option</th>
+      <th>Is admin</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -26,9 +27,10 @@
           <tr>
             <th scope+"row"><c:out value="${user.id}" /></th>
             <td><c:out value="${user.email}" /></td>
+            <td><c:if test="${user.admin}">Yes</c:if></td>
             <td align="right">
-            <a href="/edit-user?id=${user.id}" type="button" class="btn btn-info" >Change Password</a>
-            <button type="submit" class="btn btn-danger" formaction="/smartimageanalysis/delete-users?id=${user.id}">Delete</button>
+            <a href="/edit-user?id=${user.id}" type="button" class="btn btn-info" >Update profile</a>
+            <button type="submit" class="btn btn-danger" formaction="/delete-users?id=${user.id}" onclick="if(!confirm('Are you sure you want to delete this item?')) return false;">Delete</button>
             </td>
           </tr>
   </c:forEach>

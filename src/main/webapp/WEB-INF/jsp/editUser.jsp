@@ -14,12 +14,17 @@
     <h2>Edit User</h2>
     <form method="post" action="/edit-user">
         <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" readonly class="form-control-plaintext" id="username" value="${username}">
+          </div>
+        <div class="form-group">
             <label for="name">Change Password</label>
             <input type="text"  class="form-control" id="password" name="password" value="${password}">
         </div>
         <div class="form-check">
-            <input type="checkbox" class="form-check-input" id="isAdmin" name="isAdmin">
-            <label class="form-check-label" for="exampleCheck1">Make Admin</label>
+            <input type="checkbox" class="form-check-input" id="isAdmin" name="isAdmin" value="true" ${isAdmin?"checked":""}/>
+            <input type="hidden" name="isAdmin" value="false" />
+             <label class="form-check-label" for="isAdmin">Is Admin</label>
         </div>
         <input type=hidden name="id" value="${id}"/>
         <a href="/users" class="btn btn-secondary">Back</a>

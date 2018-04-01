@@ -1,22 +1,12 @@
 package entities;
 
-import java.util.List;
 import java.io.Serializable;
-import java.sql.Timestamp;
 
-import javax.persistence.Basic;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinColumns;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Transient;
-import javax.persistence.Embeddable;
 
 @Entity
 @Table(name = "users")
@@ -33,7 +23,7 @@ public class User implements Serializable{
     @Column(name = "password")
     String password;
 
-    boolean isAdmin;
+    boolean admin;
 
     public int getId() {
         return id;
@@ -58,10 +48,10 @@ public class User implements Serializable{
     public void setPassword(String password){this.password = password;}
 
     public boolean isAdmin() {
-        return isAdmin;
+        return admin;
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        this.admin = admin;
     }
 }

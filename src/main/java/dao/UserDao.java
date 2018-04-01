@@ -66,7 +66,7 @@ public class UserDao {
         if (cursor != null && !cursor.equals("")) {
             offset = Integer.parseInt(cursor);
         }
-        final String listBooksString = "SELECT id, email, password FROM Users ORDER BY id ASC";
+        final String listBooksString = "SELECT id, email, password, isAdmin FROM Users ORDER BY id ASC";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement listBooksStmt = conn.prepareStatement(listBooksString)) {
@@ -77,6 +77,7 @@ public class UserDao {
                     user.setId((rs.getInt("id")));
                     user.setEmail((rs.getString("email")));
                     user.setPassword((rs.getString("password")));
+                    user.setAdmin(rs.getBoolean("isAdmin"));
                     results.add(user);
                 }
             }

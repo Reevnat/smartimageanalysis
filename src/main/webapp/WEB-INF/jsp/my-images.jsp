@@ -65,7 +65,7 @@
                     </c:forEach>
                     </tbody>
                   </table></td>
-                  <td><button type="submit" class="btn btn-danger" formaction="/delete-image?id=${item.id}" onclick="if(!confirm('Are you sure you want to delete this item')) return false;">Delete</button>
+                  <td><button type="submit" class="btn btn-danger" formaction="/delete-image?id=${item.id}" onclick="if(!confirm('Are you sure you want to delete this item?')) return false;">Delete</button>
                 </tr>
         </c:forEach>
         </tbody>
