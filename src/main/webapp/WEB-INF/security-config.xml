@@ -13,6 +13,7 @@
         <intercept-url pattern="/login*" access="permitAll" />
         <intercept-url pattern="/loginProcess*" access="permitAll" />
         <intercept-url pattern="/register" access="permitAll" />
+        <intercept-url pattern="/registerProcess" access="permitAll" />
         <intercept-url pattern="/categories" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/users" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/**" access="isAuthenticated()" />
