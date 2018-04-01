@@ -11,9 +11,7 @@
     <%@ include file="../_shared/header.jsp" %>
     <div class="small-divider">
     <div class="view-area">
-    <h2>My Images</h2>
-    <a href="/add-image" class="btn btn-primary">Upload New Image</a><br></br>
-    <form method="post" action="">
+    <h2>Similar Images</h2>
     <table class="table">
         <thead class="thead-light">
         <tr>
@@ -57,18 +55,16 @@
                     <tbody>
                     <c:forEach items="${item.similarityScores}" var="score">
                     <tr>
-                        <td><a href="/similar-images?categoryId=${score.categoryId}">${score.category}</a></td>
+                        <td><a href="/similar-images?categoryId=${score.categoryId}"><c:out value="${score.category}"/></a></td>
                         <td><c:out value="${score.score}"/></td>
                     </tr>
                     </c:forEach>
                     </tbody>
                   </table></td>
-                  <td><button type="submit" class="btn btn-danger" formaction="/delete-image?id=${item.id}" onclick="if(!confirm('Are you sure you want to delete this item?')) return false;">Delete</button>
                 </tr>
         </c:forEach>
         </tbody>
     </table>
-    </form>
     </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

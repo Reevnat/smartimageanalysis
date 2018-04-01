@@ -5,14 +5,12 @@ import Utils.CloudVisionHelper;
 import dao.ImageDao;
 import dao.LabelAnnotationDao;
 import dao.UserDao;
-import entities.Image;
-import entities.LabelAnnotation;
-import entities.Result;
-import entities.User;
+import entities.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,6 +25,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -156,5 +155,36 @@ public class ImagesController implements ServletContextAware {
         }
 
         return new RedirectView("/my-images");
+    }
+
+    @RequestMapping(value="/similar-images", method = RequestMethod.GET)
+    public String listSimilarImages(@RequestParam("categoryId") Long categoryId){
+
+        try {
+            ImageDao dao = new ImageDao(connect);
+            Result<Image> result = dao.listImages();
+            List<Image> result2 = new ArrayList<>();
+
+            for(int i=0;i<result.result.size();i++){
+                LabelAnnotationDao labelDao = new LabelAnnotationDao(connect);
+                Image image = result.result.get(i);
+                image.setAnnotations(labelDao.list("",image).result);
+                image.setSimilarityScores(dao.similarityScoreList(image).result);
+                List<SimilarityScore> scores = image.getSimilarityScores();
+                for(int j=0;j<scores.size();j++) {
+                    if(scores.get(j).getCategoryId() == categoryId)
+                    {
+                        result2.add(image);
+                    }
+                }
+            }
+
+            context.setAttribute("images",result2 );
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "similar-images";
     }
 }

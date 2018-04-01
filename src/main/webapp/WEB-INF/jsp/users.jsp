@@ -25,7 +25,7 @@
   <tbody>
   <c:forEach items="${users}" var="user">
           <tr>
-            <th scope+"row"><c:out value="${user.id}" /></th>
+            <th scope="row"><c:out value="${user.id}" /></th>
             <td><c:out value="${user.email}" /></td>
             <td><c:if test="${user.admin}">Yes</c:if></td>
             <td align="right">

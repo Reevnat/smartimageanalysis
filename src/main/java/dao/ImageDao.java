@@ -137,4 +137,24 @@ public class ImageDao {
             return new Result<>(results);
         }
     }
+
+    public Result<Image> listImages() throws SQLException {
+
+        final String query = "SELECT id, url FROM Images ORDER BY id ASC";
+
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement listStatement = conn.prepareStatement(query)) {
+            List<Image> results = new ArrayList<>();
+            try (ResultSet rs = listStatement.executeQuery()) {
+                while (rs.next()) {
+                    Image entity = new Image();
+                    entity.setId((rs.getInt("id")));
+                    entity.setUrl((rs.getString("url")));
+                    results.add(entity);
+                }
+            }
+
+            return  new Result<>(results);
+        }
+    }
 }
