@@ -19,7 +19,9 @@
         <tr>
         <th>Id</th>
         <th>Url</th>
-        <th>Labels</th>
+        <th></th>
+        <th>Images like me</th>
+        <th></th>
         <th></th>
         </tr>
         </thead>
@@ -28,7 +30,41 @@
                 <tr>
                   <td><c:out value="${item.id}" /></td>
                   <td><img src="${item.url}" alt="image" class="my-image img-fluid" /></td>
-                  <td><c:forEach items="${item.annotations}" var="annotation"><c:out value="${annotation.description}"/><br/></c:forEach></td>
+                  <td>
+                  <table class="table table-sm">
+                      <thead class="thead-light">
+                        <tr>
+                          <th scope="col">Labels</th>
+                          <th scope="col">Score</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <c:forEach items="${item.annotations}" var="annotation">
+                      <tr>
+                          <td><c:out value="${annotation.description}"/></td>
+                          <td><c:out value="${annotation.score}"/></td>
+                      </tr>
+                      </c:forEach>
+                      </tbody>
+                    </table>
+                  </td>
+                  <td>
+                  <table class="table table-sm">
+                    <thead class="thead-light">
+                      <tr>
+                        <th scope="col">Category</th>
+                        <th scope="col">Score</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <c:forEach items="${item.similarityScores}" var="a">
+                    <tr>
+                        <td><c:out value="${a.category}"/></td>
+                        <td><c:out value="${a.score}"/></td>
+                    </tr>
+                    </c:forEach>
+                    </tbody>
+                  </table></td>
                   <td><button type="submit" class="btn btn-danger" formaction="/delete-image?id=${item.id}" onclick="if(!confirm('Are you sure you want to delete this item')) return false;">Delete</button>
                 </tr>
         </c:forEach>

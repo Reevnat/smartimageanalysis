@@ -2,8 +2,11 @@ package dao;
 
 import entities.Image;
 import entities.Result;
+import entities.SimilarityScore;
 import entities.User;
 import org.apache.commons.dbcp2.BasicDataSource;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -102,5 +105,36 @@ public class ImageDao {
         }
 
         return  entity;
+    }
+
+    public Result<SimilarityScore> similarityScoreList(Image image) throws SQLException {
+        final  String query = "SELECT A.id AS categoryId, A.name AS category,  Count(C.score >= B.threshold)/Count(A.id) AS score" +
+                " FROM (Categories AS A" +
+                " INNER JOIN Labels AS B" +
+                " ON A.id = B.categoryId)" +
+                " LEFT JOIN LabelAnnotations AS C" +
+                " ON (B.description = C.description AND C.imageId = ? )" +
+                " GROUP BY A.id, A.name" +
+                " HAVING score >= 0.5" +
+                " ORDER BY score DESC" +
+                " LIMIT 5";
+
+        try (Connection conn = dataSource.getConnection();
+             PreparedStatement listStatement1 = conn.prepareStatement(query)) {
+            listStatement1.setInt(1, image.getId());
+            List<SimilarityScore> results = new ArrayList<>();
+            try (ResultSet rs = listStatement1.executeQuery()) {
+
+                while (rs.next()) {
+                    SimilarityScore entity = new SimilarityScore();
+                    entity.setCategoryId((rs.getInt("categoryId")));
+                    entity.setCategory((rs.getString("category")));
+                    entity.setScore(rs.getDouble("score"));
+                    results.add(entity);
+                }
+            }
+
+            return new Result<>(results);
+        }
     }
 }

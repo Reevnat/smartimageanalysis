@@ -62,6 +62,7 @@ public class ImagesController implements ServletContextAware {
                 LabelAnnotationDao labelDao = new LabelAnnotationDao(connect);
                 Image image = result.result.get(i);
                 image.setAnnotations(labelDao.list("",image).result);
+                image.setSimilarityScores(dao.similarityScoreList(image).result);
                 result.result.set(i,image);
             }
 
