@@ -27,7 +27,7 @@
         <c:forEach items="${images}" var="item">
                 <tr>
                   <td><c:out value="${item.id}" /></td>
-                  <td><img src="${item.url}" alt="image" css="my-image" /></td>
+                  <td><img src="${item.url}" alt="image" class="my-image img-fluid" /></td>
                   <td><c:forEach items="${item.annotations}" var="annotation"><c:out value="${annotation.description}"/><br/></c:forEach></td>
                   <td><button type="submit" class="btn btn-danger" formaction="/delete-image?id=${item.id}" onclick="if(!confirm('Are you sure you want to delete this item')) return false;">Delete</button>
                 </tr>
