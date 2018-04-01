@@ -33,11 +33,18 @@ public class RegistrationController {
     public ModelAndView addUser(HttpServletRequest request, HttpServletResponse response,
                                 @ModelAttribute("user") User user, @ModelAttribute("login") Login login) {
 
-        userService.register(user);
+        if (userService.findByUsername(user.getEmail()) != null)
+        {
+            ModelAndView mav = new ModelAndView("register");
+            mav.addObject("message", "User already exists");
+            return mav;
+        }else{
+            userService.register(user);
 
-        //return new ModelAndView("/login", "email", user.getEmail());
-        ModelAndView mav = new ModelAndView("login");
-        mav.addObject("message", "Registration Successful!");
-        return mav;
+            //return new ModelAndView("/login", "email", user.getEmail());
+            ModelAndView mav = new ModelAndView("login");
+            mav.addObject("message", "Registration Successful!");
+            return mav;
+        }
     }
 }

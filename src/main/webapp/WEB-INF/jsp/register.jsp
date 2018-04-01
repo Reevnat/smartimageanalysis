@@ -36,20 +36,11 @@
             									<div class="form-group">
             										<form:input type="password" path="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password"/>
             									</div>
-                                                <div class="form-group">
-            										<input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
-            									</div>
             									<div class="form-group">
             										<div class="row">
             											<div class="col-sm-6 col-sm-offset-0">
-            											    <form:button id="register" name="register" class="btn btn-success btn-lg">Submit</form:button>
-            											</div>
-            										</div>
-            									</div>
-                                                <div class="form-group">
-            										<div class="row">
-            											<div class="col-sm-6 col-sm-offset-0">
             											    <button type="button" class="btn btn-warning btn-lg" onclick="window.open('/login','_self')">Back</button>
+            											    <form:button id="register" name="register" class="btn btn-success btn-lg">Submit</form:button>
             											</div>
             										</div>
             									</div>
