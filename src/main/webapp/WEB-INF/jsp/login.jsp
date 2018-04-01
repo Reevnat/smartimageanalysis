@@ -19,9 +19,13 @@
             <div class="container">
                 	<div class="row">
             			<div class="col-md-6 col-md-offset-3">
+
             				<div class="panel panel-login">
             					<div class="panel-heading">
             						<div class="row">
+            						    <table class="table ">
+                                            <thead class="table"><tr><th class="text-center"><h3>Smart Image Analysis (SMIA)</h3></th></tr></thead>
+                                        </table>
             							<div class="col-xs-12">
             								<a href="#" class="active" id="login-form-link">Login</a>
             							</div>

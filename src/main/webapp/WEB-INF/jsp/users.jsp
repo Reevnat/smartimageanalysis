@@ -26,7 +26,9 @@
           <tr>
             <th scope+"row"><c:out value="${user.id}" /></th>
             <td><c:out value="${user.email}" /></td>
-            <td align="right"><button type="submit" class="btn btn-danger" formaction="/smartimageanalysis/delete-users?id=${user.id}">Delete</button></td>
+            <td align="right">
+            <button type="submit" class="btn btn-danger" formaction="/smartimageanalysis/delete-users?id=${user.id}">Delete</button>
+            </td>
           </tr>
   </c:forEach>
   </tbody>

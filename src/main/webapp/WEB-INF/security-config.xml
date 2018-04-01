@@ -17,7 +17,7 @@
         <intercept-url pattern="/categories" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/users" access="hasRole('ROLE_ADMIN')" />
         <intercept-url pattern="/**" access="isAuthenticated()" />
-        <form-login login-page="/login" username-parameter="email" password-parameter="password" default-target-url="/" login-processing-url="/login-process" authentication-failure-url="/login?error=authenticated+not+successful"  />
+        <form-login login-page="/login" username-parameter="email" password-parameter="password" default-target-url="/" login-processing-url="/login-process" authentication-failure-url="/login?error=Authentication+not+successful"  />
         <csrf disabled="true"></csrf>
         <logout logout-url="/logout" delete-cookies="JSESSIONID" invalidate-session="true" logout-success-url="/login" />
     </http>
