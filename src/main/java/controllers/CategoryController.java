@@ -31,7 +31,8 @@ public class CategoryController implements ServletContextAware {
     @Override
     public void setServletContext(final ServletContext servletContext) {
         this.context = servletContext;
-        connect = context.getInitParameter("sql.urlLocal");
+        String deploymentEnvironment = context.getInitParameter("deployment.environment");
+        connect = context.getInitParameter(deploymentEnvironment.toLowerCase().equals("local") ? "sql.urlLocal": "sql.urlRemote");
     }
     @RequestMapping(value="/categories", method = RequestMethod.GET)
     public String listCategories(){
