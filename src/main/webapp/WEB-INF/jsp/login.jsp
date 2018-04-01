@@ -59,14 +59,14 @@
             									<div class="form-group">
             										<div class="row">
             											<div class="col-sm-6 col-sm-offset-0">
-            											    <button id="login" name="login" class="btn btn-blue-grey btn-lg">Login</button>
+            											    <button id="login" name="login" class="btn btn-primary btn-lg">Login</button>
             											</div>
             										</div>
             									</div>
                                                 <div class="form-group">
             										<div class="row">
             											<div class="col-sm-6 col-sm-offset-0">
-            											    <button type="button" class="btn btn-light-green btn-lg" onclick="window.open('/register','_self')">Register</button>
+            											    <button type="button" class="btn btn-success btn-lg" onclick="window.open('/register','_self')">Register</button>
             											</div>
             										</div>
             									</div>
