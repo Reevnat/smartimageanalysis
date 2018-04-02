@@ -14,7 +14,7 @@ public class CategoryDao {
     public CategoryDao(final String url) throws SQLException
     {
         dataSource.setUrl(url);
-        final String createTableSql = "CREATE TABLE IF NOT EXISTS Categories ( id INT NOT NULL AUTO_INCREMENT, "
+        final String createTableSql = "CREATE TABLE IF NOT EXISTS categories ( id INT NOT NULL AUTO_INCREMENT, "
                 + "name NVARCHAR(255),  PRIMARY KEY (id))";
         try (Connection conn = dataSource.getConnection()) {
             conn.createStatement().executeUpdate(createTableSql);
@@ -22,7 +22,7 @@ public class CategoryDao {
     }
 
     public Long create(Category image) throws SQLException {
-        final String query = "INSERT INTO Categories "
+        final String query = "INSERT INTO categories "
                 + "(name) "
                 + "VALUES (?)";
         try (Connection conn = dataSource.getConnection();
@@ -39,7 +39,7 @@ public class CategoryDao {
     }
 
     public void delete(Long imageId) throws SQLException {
-        final String query = "DELETE FROM Categories WHERE id = ?";
+        final String query = "DELETE FROM categories WHERE id = ?";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement deleteStatement = conn.prepareStatement(query)) {
             deleteStatement.setLong(1, imageId);
@@ -49,7 +49,7 @@ public class CategoryDao {
 
     public Category get(Long imageId) throws  SQLException{
         Category entity = null;
-        final String query = "SELECT id, name FROM Categories WHERE id = ?";
+        final String query = "SELECT id, name FROM categories WHERE id = ?";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement findStatement = conn.prepareStatement(query)) {
             findStatement.setLong(1, imageId);
@@ -70,7 +70,7 @@ public class CategoryDao {
         if (cursor != null && !cursor.equals("")) {
             offset = Integer.parseInt(cursor);
         }
-        final String query = "SELECT id, name FROM Categories ORDER BY id ASC";
+        final String query = "SELECT id, name FROM categories ORDER BY id ASC";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement listStatement = conn.prepareStatement(query)) {

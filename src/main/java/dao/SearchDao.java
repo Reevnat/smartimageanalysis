@@ -43,10 +43,10 @@ public class SearchDao {
         }
 
 
-        final String query = "SELECT A.id,url, email AS uploadedBy FROM Images as A" +
-                " INNER JOIN Labelannotations as B" +
+        final String query = "SELECT A.id,url, email AS uploadedBy FROM images as A" +
+                " INNER JOIN labelannotations as B" +
                 " ON A.id = B.imageId" +
-                " INNER JOIN Users AS C" +
+                " INNER JOIN users AS C" +
                 " ON A.uploadedById = C.id"+
                 " WHERE (" + descriptionFilter + ")" +
                 " ORDER BY A.id ASC" +

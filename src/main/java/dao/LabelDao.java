@@ -15,9 +15,9 @@ public class LabelDao {
     public LabelDao(final String url) throws SQLException
     {
         dataSource.setUrl(url);
-        final String createTableSql = "CREATE TABLE IF NOT EXISTS Labels ( id INT NOT NULL AUTO_INCREMENT, "
+        final String createTableSql = "CREATE TABLE IF NOT EXISTS labels ( id INT NOT NULL AUTO_INCREMENT, "
                 + "description NVARCHAR(255), threshold double, categoryId int,  PRIMARY KEY (id), CONSTRAINT `FK->categoryId->id` FOREIGN KEY (`categoryId`)"
-                + " REFERENCES `smia`.`Categories` (`id`)"
+                + " REFERENCES `smia`.`categories` (`id`)"
                 + " ON DELETE CASCADE"
                 + " ON UPDATE CASCADE)";
         try (Connection conn = dataSource.getConnection()) {
@@ -26,7 +26,7 @@ public class LabelDao {
     }
 
     public Long create(Label label) throws SQLException {
-        final String query = "INSERT INTO Labels "
+        final String query = "INSERT INTO labels "
                 + "(description, threshold, categoryId) "
                 + "VALUES (?,?,?)";
         try (Connection conn = dataSource.getConnection();
@@ -45,7 +45,7 @@ public class LabelDao {
     }
 
     public void delete(Long imageId) throws SQLException {
-        final String query = "DELETE FROM Labels WHERE id = ?";
+        final String query = "DELETE FROM labels WHERE id = ?";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement deleteStatement = conn.prepareStatement(query)) {
             deleteStatement.setLong(1, imageId);
@@ -58,7 +58,7 @@ public class LabelDao {
         if (cursor != null && !cursor.equals("")) {
             offset = Integer.parseInt(cursor);
         }
-        final String query = "SELECT id, description, threshold, categoryId FROM Labels WHERE categoryId = ? ORDER BY id ASC";
+        final String query = "SELECT id, description, threshold, categoryId FROM labels WHERE categoryId = ? ORDER BY id ASC";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement listStatement = conn.prepareStatement(query)) {

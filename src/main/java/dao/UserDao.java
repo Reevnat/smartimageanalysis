@@ -17,7 +17,7 @@ public class UserDao {
 
     public UserDao(final String url) throws SQLException{
         dataSource.setUrl(url);
-        final String createTableSql = "CREATE TABLE IF NOT EXISTS Users ( id INT NOT NULL AUTO_INCREMENT, "
+        final String createTableSql = "CREATE TABLE IF NOT EXISTS users ( id INT NOT NULL AUTO_INCREMENT, "
                 + "email NVARCHAR(255), password NVARCHAR(255),PRIMARY KEY (id))";
         try (Connection conn = dataSource.getConnection()) {
             conn.createStatement().executeUpdate(createTableSql);
@@ -25,7 +25,7 @@ public class UserDao {
     }
 
     public Long create(User user) throws SQLException {
-        final String createBookString = "INSERT INTO Users "
+        final String createBookString = "INSERT INTO users "
                 + "(email, password) "
                 + "VALUES (?)";
         try (Connection conn = dataSource.getConnection();
@@ -42,7 +42,7 @@ public class UserDao {
     }
 
     public void deleteUser(Long userId) throws SQLException {
-        final String deleteUserQuery = "DELETE FROM Users WHERE id = ?";
+        final String deleteUserQuery = "DELETE FROM users WHERE id = ?";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement deleteStatement = conn.prepareStatement(deleteUserQuery)) {
             deleteStatement.setLong(1, userId);
@@ -51,7 +51,7 @@ public class UserDao {
     }
 
     public void updateUser(Long userId, String password, boolean isAdmin) throws SQLException{
-        final String updateUserQuery = "UPDATE Users SET password = ?, isAdmin = ? WHERE id = ?";
+        final String updateUserQuery = "UPDATE users SET password = ?, isAdmin = ? WHERE id = ?";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement updateUserStatement = conn.prepareStatement(updateUserQuery)) {
             updateUserStatement.setString(1, password);
@@ -66,7 +66,7 @@ public class UserDao {
         if (cursor != null && !cursor.equals("")) {
             offset = Integer.parseInt(cursor);
         }
-        final String listBooksString = "SELECT id, email, password, isAdmin FROM Users ORDER BY id ASC";
+        final String listBooksString = "SELECT id, email, password, isAdmin FROM users ORDER BY id ASC";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement listBooksStmt = conn.prepareStatement(listBooksString)) {

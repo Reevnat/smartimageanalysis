@@ -15,9 +15,9 @@ public class LabelAnnotationDao {
 
     public LabelAnnotationDao(final String url) throws SQLException {
         dataSource.setUrl(url);
-        final String createTableSql = "CREATE TABLE IF NOT EXISTS LabelAnnotations ( id INT NOT NULL AUTO_INCREMENT, "
+        final String createTableSql = "CREATE TABLE IF NOT EXISTS labelannotations ( id INT NOT NULL AUTO_INCREMENT, "
                 + "description NVARCHAR(255), score double, imageId int, PRIMARY KEY (id), CONSTRAINT `FK->imageId->id` FOREIGN KEY (`imageId`)" +
-                " REFERENCES `smia`.`Images` (`id`)" +
+                " REFERENCES `smia`.`images` (`id`)" +
                 " ON DELETE CASCADE" +
                 " ON UPDATE CASCADE)";
         try (Connection conn = dataSource.getConnection()) {
@@ -26,7 +26,7 @@ public class LabelAnnotationDao {
     }
 
     public Long create(LabelAnnotation entity) throws SQLException {
-        final String query = "INSERT INTO LabelAnnotations "
+        final String query = "INSERT INTO labelannotations "
                 + "(description, score, imageId) "
                 + "VALUES (?, ?, ?)";
         try (Connection conn = dataSource.getConnection();
@@ -49,7 +49,7 @@ public class LabelAnnotationDao {
         if (cursor != null && !cursor.equals("")) {
             offset = Integer.parseInt(cursor);
         }
-        final String query = "SELECT id, description, score, imageId FROM LabelAnnotations" +
+        final String query = "SELECT id, description, score, imageId FROM labelannotations" +
                 " WHERE imageId = ? ORDER BY id ASC";
 
         try (Connection conn = dataSource.getConnection();

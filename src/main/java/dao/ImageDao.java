@@ -18,9 +18,9 @@ public class ImageDao {
     public ImageDao(final String url) throws SQLException
     {
         dataSource.setUrl(url);
-        final String createTableSql = "CREATE TABLE IF NOT EXISTS Images ( id INT NOT NULL AUTO_INCREMENT, "
+        final String createTableSql = "CREATE TABLE IF NOT EXISTS images ( id INT NOT NULL AUTO_INCREMENT, "
                 + "url NVARCHAR(255), uploadedById int,  PRIMARY KEY (id), CONSTRAINT `FK->uploadedById->id` FOREIGN KEY (`uploadedById`)"
-                + " REFERENCES `smia`.`Users` (`id`)"
+                + " REFERENCES `smia`.`users` (`id`)"
                 + " ON DELETE CASCADE"
                 + " ON UPDATE CASCADE)";
         try (Connection conn = dataSource.getConnection()) {
@@ -29,7 +29,7 @@ public class ImageDao {
     }
 
     public Long createImage(Image image, User uploadedBy) throws SQLException {
-        final String query = "INSERT INTO Images "
+        final String query = "INSERT INTO images "
                 + "(url, uploadedById) "
                 + "VALUES (?,?)";
         try (Connection conn = dataSource.getConnection();
@@ -51,7 +51,7 @@ public class ImageDao {
         if (cursor != null && !cursor.equals("")) {
             offset = Integer.parseInt(cursor);
         }
-        final String query = "SELECT id, url, uploadedById FROM Images WHERE uploadedById = ? ORDER BY id ASC";
+        final String query = "SELECT id, url, uploadedById FROM images WHERE uploadedById = ? ORDER BY id ASC";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement listStatement = conn.prepareStatement(query)) {
@@ -81,7 +81,7 @@ public class ImageDao {
     }
 
     public void deleteImage(Long imageId) throws SQLException {
-        final String query = "DELETE FROM Images WHERE id = ?";
+        final String query = "DELETE FROM images WHERE id = ?";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement deleteStatement = conn.prepareStatement(query)) {
             deleteStatement.setLong(1, imageId);
@@ -91,7 +91,7 @@ public class ImageDao {
 
     public Image getImage(Long imageId) throws  SQLException{
         Image entity = null;
-        final String query = "SELECT id, url, uploadedById FROM Images WHERE id = ?";
+        final String query = "SELECT id, url, uploadedById FROM images WHERE id = ?";
         try (Connection conn = dataSource.getConnection();
              PreparedStatement findStatement = conn.prepareStatement(query)) {
             findStatement.setLong(1, imageId);
@@ -110,10 +110,10 @@ public class ImageDao {
 
     public Result<SimilarityScore> similarityScoreList(Image image) throws SQLException {
         final  String query = "SELECT A.id AS categoryId, A.name AS category,  Count(C.score >= B.threshold)/Count(A.id) AS score" +
-                " FROM (Categories AS A" +
-                " INNER JOIN Labels AS B" +
+                " FROM (categories AS A" +
+                " INNER JOIN labels AS B" +
                 " ON A.id = B.categoryId)" +
-                " LEFT JOIN LabelAnnotations AS C" +
+                " LEFT JOIN labelannotations AS C" +
                 " ON (B.description = C.description AND C.imageId = ? )" +
                 " GROUP BY A.id, A.name" +
                 " HAVING score >= 0.5" +
@@ -141,7 +141,7 @@ public class ImageDao {
 
     public Result<Image> listImages() throws SQLException {
 
-        final String query = "SELECT id, url, uploadedById FROM Images ORDER BY id ASC";
+        final String query = "SELECT id, url, uploadedById FROM images ORDER BY id ASC";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement listStatement = conn.prepareStatement(query)) {
