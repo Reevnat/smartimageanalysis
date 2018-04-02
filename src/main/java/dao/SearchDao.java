@@ -43,13 +43,13 @@ public class SearchDao {
         }
 
 
-        final String query = "SELECT A.id,url, email AS uploadedBy FROM images as A" +
+        final String query = "SELECT DISTINCT A.id, url, email AS uploadedBy FROM images as A" +
                 " INNER JOIN labelannotations as B" +
                 " ON A.id = B.imageId" +
                 " INNER JOIN users AS C" +
                 " ON A.uploadedById = C.id"+
                 " WHERE (" + descriptionFilter + ")" +
-                " ORDER BY A.id ASC" +
+                " ORDER BY A.id DESC" +
                 " LIMIT ? OFFSET ?";
 
         try (Connection conn = dataSource.getConnection();
