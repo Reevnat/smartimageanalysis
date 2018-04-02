@@ -27,7 +27,7 @@
         <tbody>
         <c:forEach items="${images}" var="item">
                 <tr>
-                  <td><img src="${item.url}" alt="image" class="my-image img-fluid" /></td>
+                  <td><img src="${item.url}" alt="image" class="my-image img-fluid" style="max-width:300px"/></td>
                   <td>
                   <table class="table table-sm">
                       <thead class="thead-light">

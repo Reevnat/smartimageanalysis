@@ -12,59 +12,39 @@
     <div class="small-divider">
     <div class="view-area">
     <h2>Similar Images</h2>
-    <table class="table">
-        <thead class="thead-light">
-        <tr>
-        <th></th>
-        <th></th>
-        <th>Images like me</th>
-        <th></th>
-        <th></th>
-        </tr>
-        </thead>
-        <tbody>
+
+    <div class="container-fluid">
+        <div class="row">
         <c:forEach items="${images}" var="item">
-                <tr>
-                  <td><img src="${item.url}" alt="image" class="my-image img-fluid" /></td>
-                  <td>
-                  <table class="table table-sm">
-                      <thead class="thead-light">
-                        <tr>
-                          <th scope="col">Labels</th>
-                          <th scope="col">Score</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <c:forEach items="${item.annotations}" var="annotation">
-                      <tr>
-                          <td><c:out value="${annotation.description}"/></td>
-                          <td><c:out value="${annotation.score}"/></td>
-                      </tr>
-                      </c:forEach>
-                      </tbody>
-                    </table>
-                  </td>
-                  <td>
-                  <table class="table table-sm">
-                    <thead class="thead-light">
-                      <tr>
-                        <th scope="col">Category</th>
-                        <th scope="col">Score</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    <c:forEach items="${item.similarityScores}" var="score">
-                    <tr>
-                        <td><a href="/similar-images?categoryId=${score.categoryId}"><c:out value="${score.category}"/></a></td>
-                        <td><c:out value="${score.score}"/></td>
-                    </tr>
-                    </c:forEach>
-                    </tbody>
-                  </table></td>
-                </tr>
+        <div class="col-sm-3">
+        <div class="card">
+          <img class="card-img-top" src="${item.url}" alt="image">
+          <div class="card-body text-left">
+          <table class="table table-sm">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col"></th>
+                <th scope="col">Similarity score</th>
+              </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${item.annotations}" var="annotation">
+            <tr>
+                <td><c:out value="${annotation.description}"/></td>
+                <td><c:out value="${annotation.score}"/></td>
+            </tr>
+            </c:forEach>
+            </tbody>
+          </table>
+          </div>
+          <div class="card-body text-left">
+            Image Uploaded By: <strong><c:out value="${item.uploadedBy}"/></strong>
+          </div>
+        </div>
+        </div>
         </c:forEach>
-        </tbody>
-    </table>
+        </div>
+    </div>
     </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>

@@ -8,6 +8,7 @@ public class Image {
     String url;
     String category;
     int uploadedById;
+    String uploadedBy;
     List<LabelAnnotation> annotations;
     List<SimilarityScore> similarityScores;
 
@@ -57,5 +58,13 @@ public class Image {
 
     public void setSimilarityScores(List<SimilarityScore> similarityScores) {
         this.similarityScores = similarityScores;
+    }
+
+    public String getUploadedBy() {
+        return uploadedBy;
+    }
+
+    public void setUploadedBy(String uploadedBy) {
+        this.uploadedBy = uploadedBy;
     }
 }

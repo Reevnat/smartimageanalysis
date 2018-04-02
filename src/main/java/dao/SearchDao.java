@@ -43,9 +43,11 @@ public class SearchDao {
         }
 
 
-        final String query = "SELECT A.id,url FROM Images as A" +
+        final String query = "SELECT A.id,url, email AS uploadedBy FROM Images as A" +
                 " INNER JOIN Labelannotations as B" +
                 " ON A.id = B.imageId" +
+                " INNER JOIN Users AS C" +
+                " ON A.uploadedById = C.id"+
                 " WHERE (" + descriptionFilter + ")" +
                 " ORDER BY A.id ASC" +
                 " LIMIT ? OFFSET ?";
@@ -65,6 +67,7 @@ public class SearchDao {
                     SearchResult entity = new SearchResult();
                     entity.setImageId(rs.getInt("id"));
                     entity.setImageUrl((rs.getString("url")));
+                    entity.setUploadedBy(rs.getString("uploadedBy"));
                     results.add(entity);
                 }
             }

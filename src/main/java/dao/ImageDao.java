@@ -51,7 +51,7 @@ public class ImageDao {
         if (cursor != null && !cursor.equals("")) {
             offset = Integer.parseInt(cursor);
         }
-        final String query = "SELECT id, url FROM Images WHERE uploadedById = ? ORDER BY id ASC";
+        final String query = "SELECT id, url, uploadedById FROM Images WHERE uploadedById = ? ORDER BY id ASC";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement listStatement = conn.prepareStatement(query)) {
@@ -62,6 +62,7 @@ public class ImageDao {
                     Image entity = new Image();
                     entity.setId((rs.getInt("id")));
                     entity.setUrl((rs.getString("url")));
+                    entity.setUploadedById(rs.getInt("uploadedById"));
                     results.add(entity);
                 }
             }
@@ -140,7 +141,7 @@ public class ImageDao {
 
     public Result<Image> listImages() throws SQLException {
 
-        final String query = "SELECT id, url FROM Images ORDER BY id ASC";
+        final String query = "SELECT id, url, uploadedById FROM Images ORDER BY id ASC";
 
         try (Connection conn = dataSource.getConnection();
              PreparedStatement listStatement = conn.prepareStatement(query)) {
@@ -150,6 +151,7 @@ public class ImageDao {
                     Image entity = new Image();
                     entity.setId((rs.getInt("id")));
                     entity.setUrl((rs.getString("url")));
+                    entity.setUploadedById(rs.getInt("uploadedById"));
                     results.add(entity);
                 }
             }

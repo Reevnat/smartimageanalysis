@@ -11,26 +11,37 @@
 </head>
 <body class="text-center">
     <%@ include file="../_shared/header.jsp" %>
-    <form action="/" method="get">
-      <div class="form-group">
-        <label for="keywords">Keywords</label>
-        <input type="text" class="form-control" id="keywords"  name="keywords" placeholder="Search" value="${keywords}">
-      </div>
-      <button type="submit" class="btn btn-primary">Search</button>
-    </form>
     <div class="view-area">
-    <ul class="list-unstyled">
-        <c:forEach items="${result}" var="item">
-             <li class="media">
-                <img class="mr-3" src="${item.imageUrl}" alt="image">
-                <div class="media-body">
-                  <h5 class="mt-0 mb-1">List-based media object</h5>
-                  Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-                </div>
-              </li>
-              <br></br>
-        </c:forEach>
-    </ul>
+    <form action="/" method="get" class="form-inline">
+      <div class="form-group  mx-sm-3 mb-2">
+        <input type="text" class="form-control" id="keywords"  name="keywords" placeholder="Keywords..." value="${keywords}">
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">Search</button>
+    </form>
+
+    <div class="container-fluid">
+    <div class="row">
+    <c:forEach items="${result}" var="item">
+    <div class="col-sm-3">
+    <div class="card">
+      <img class="card-img-top" src="${item.imageUrl}" alt="image">
+      <div class="card-body text-left">
+        <h5 class="card-title"><c:forEach items="${item.similarityScores}" var="score"><span><c:out value="${score.category}"/></span> </c:forEach></h5>
+        <p class="card-text">Image matches following labels</p>
+      </div>
+      <ul class="list-group list-group-flush text-left">
+      <c:forEach items="${item.annotations}" var="annotation">
+        <li class="list-group-item"><c:out value="${annotation.description}" /></li>
+      </c:forEach>
+      </ul>
+      <div class="card-body text-left">
+        Image Uploaded By: <strong><c:out value="${item.uploadedBy}"/></strong>
+      </div>
+    </div>
+    </div>
+    </c:forEach>
+    </div>
+    </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"  crossorigin="anonymous"></script>
