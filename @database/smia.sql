@@ -26,18 +26,8 @@ CREATE TABLE `categories` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `categories`
---
-
-LOCK TABLES `categories` WRITE;
-/*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (3,'Medium');
-/*!40000 ALTER TABLE `categories` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `images`
@@ -55,16 +45,6 @@ CREATE TABLE `images` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `images`
---
-
-LOCK TABLES `images` WRITE;
-/*!40000 ALTER TABLE `images` DISABLE KEYS */;
-INSERT INTO `images` VALUES (2,'https://www.googleapis.com/download/storage/v1/b/smia-us/o/image-2018-03-27-204113086?generation=1522183278411948&alt=media',2),(3,'https://www.googleapis.com/download/storage/v1/b/smia-us/o/image-2018-03-27-215549859?generation=1522187754629368&alt=media',2);
-/*!40000 ALTER TABLE `images` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `labelannotations`
 --
 
@@ -79,18 +59,8 @@ CREATE TABLE `labelannotations` (
   PRIMARY KEY (`id`),
   KEY `FK->imageId->id` (`imageId`),
   CONSTRAINT `FK->imageId->id` FOREIGN KEY (`imageId`) REFERENCES `images` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `labelannotations`
---
-
-LOCK TABLES `labelannotations` WRITE;
-/*!40000 ALTER TABLE `labelannotations` DISABLE KEYS */;
-INSERT INTO `labelannotations` VALUES (4,'Bob',100,2);
-/*!40000 ALTER TABLE `labelannotations` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `labels`
@@ -107,18 +77,8 @@ CREATE TABLE `labels` (
   PRIMARY KEY (`id`),
   KEY `FK->categoryId->id` (`categoryId`),
   CONSTRAINT `FK->categoryId->id` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `labels`
---
-
-LOCK TABLES `labels` WRITE;
-/*!40000 ALTER TABLE `labels` DISABLE KEYS */;
-INSERT INTO `labels` VALUES (1,'test',0.85,3),(2,'Best',0.75,3);
-/*!40000 ALTER TABLE `labels` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `users`
@@ -133,7 +93,7 @@ CREATE TABLE `users` (
   `password` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
   `isAdmin` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -155,4 +115,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-04-01 12:06:26
+-- Dump completed on 2018-04-02 10:11:05
