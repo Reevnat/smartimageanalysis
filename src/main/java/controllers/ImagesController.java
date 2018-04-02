@@ -106,7 +106,7 @@ public class ImagesController implements ServletContextAware {
             ImageDao dao = new ImageDao(connect);
             Image entity = new Image();
             entity.setUrl(url);
-            dao.createImage(entity,getPrincipal());
+            Long imageId = dao.createImage(entity,getPrincipal());
 
             // get annotation labels
             String path = new CloudStorageHelper().getGcsPath(entity.getUrl(),bucket);
@@ -114,7 +114,7 @@ public class ImagesController implements ServletContextAware {
             LabelAnnotationDao annotationDao = new LabelAnnotationDao(connect);
             annotations.forEach(a->
             {
-                a.setImageId(entity.getId());
+                a.setImageId(imageId.intValue());
                 try {
                     annotationDao.create(a);
                 } catch (SQLException e) {
